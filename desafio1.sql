@@ -1,10 +1,12 @@
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
+USE SpotifyClone;
+
 CREATE TABLE planos(
   id INT PRIMARY KEY AUTO_INCREMENT,
   plano VARCHAR(50) NOT NULL,
   valor_plano decimal(3, 2) NOT NULL
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE usuario(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -12,26 +14,26 @@ CREATE TABLE usuario(
   idade INT NOT NULL,
   plano_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (plano_id) REFERENCES planos(id)
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE artistas(
   id INT PRIMARY KEY AUTO_INCREMENT,
   nome varchar(50) NOT NULL
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE albuns(
   id INT PRIMARY KEY AUTO_INCREMENT,
   titulo varchar(50) NOT NULL,
   artista_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artistas(id)
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE cancoes(
   id INT PRIMARY KEY AUTO_INCREMENT,
   titulo varchar(50) NOT NULL,
   album_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (album_id) REFERENCES albuns(id)
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE artistas_seguidos(
   usuario_id INT NOT NULL,
@@ -39,7 +41,7 @@ CREATE TABLE artistas_seguidos(
   CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuario(id),
   CONSTRAINT FOREIGN KEY (artistas_id) REFERENCES artistas(id),
   PRIMARY KEY(usuario_id, artistas_id)
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE historico_reproducao_usuarios(
   usuario_id INT NOT NULL,
@@ -119,16 +121,16 @@ INSERT INTO
   historico_reproducao_usuarios (usuario_id, cancoes_id)
 VALUES
   (1, 1),
-  (6, 1),
-  (14, 1),
-  (16, 1),
+  (1, 6),
+  (1, 14),
+  (1, 16),
   (2, 2),
-  (13, 2),
-  (15, 2),
-  (17, 2),
-  (4, 3),
-  (16, 3),
-  (6, 3),
-  (11, 4),
+  (2, 13),
+  (2, 15),
+  (2, 17),
   (3, 4),
-  (18, 4);
+  (3, 16),
+  (3, 6),
+  (4, 11),
+  (4, 3),
+  (4, 18);
