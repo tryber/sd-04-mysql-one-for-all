@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS SpotifyClone;
+
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
 USE SpotifyClone;
@@ -6,7 +8,7 @@ CREATE TABLE planos(
   id INT PRIMARY KEY AUTO_INCREMENT,
   plano VARCHAR(50) NOT NULL,
   valor_plano decimal(3, 2) NOT NULL
-);
+) ENGINE=INNODB;
 
 CREATE TABLE usuario(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -14,26 +16,26 @@ CREATE TABLE usuario(
   idade INT NOT NULL,
   plano_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (plano_id) REFERENCES planos(id)
-);
+) ENGINE=INNODB;
 
 CREATE TABLE artistas(
   id INT PRIMARY KEY AUTO_INCREMENT,
   nome varchar(50) NOT NULL
-);
+) ENGINE=INNODB;
 
 CREATE TABLE albuns(
   id INT PRIMARY KEY AUTO_INCREMENT,
   titulo varchar(50) NOT NULL,
   artista_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artistas(id)
-);
+) ENGINE=INNODB;
 
 CREATE TABLE cancoes(
   id INT PRIMARY KEY AUTO_INCREMENT,
   titulo varchar(50) NOT NULL,
   album_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (album_id) REFERENCES albuns(id)
-);
+) ENGINE=INNODB;
 
 CREATE TABLE artistas_seguidos(
   usuario_id INT NOT NULL,
@@ -41,7 +43,7 @@ CREATE TABLE artistas_seguidos(
   CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuario(id),
   CONSTRAINT FOREIGN KEY (artistas_id) REFERENCES artistas(id),
   PRIMARY KEY(usuario_id, artistas_id)
-);
+) ENGINE=INNODB;
 
 CREATE TABLE historico_reproducao_usuarios(
   usuario_id INT NOT NULL,
@@ -49,7 +51,7 @@ CREATE TABLE historico_reproducao_usuarios(
   CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuario(id),
   CONSTRAINT FOREIGN KEY (cancoes_id) REFERENCES cancoes(id),
   PRIMARY KEY(usuario_id, cancoes_id)
-);
+) ENGINE=INNODB;
 
 INSERT INTO
   planos (id, plano, valor_plano)
