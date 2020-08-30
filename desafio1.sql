@@ -29,15 +29,21 @@ CREATE TABLE cancao(
   album_id INT NOT NULL,
   FOREIGN KEY(album_id) REFERENCES album(id)
 ) engine = InnoDB;
-CREATE TABLE Playlist_track(
+CREATE TABLE artiste_followed(
   artista_id INT NOT NULL,
   FOREIGN KEY (artista_id) REFERENCES artista(id),
   usuario_id INT NOT NULL,
   FOREIGN KEY (usuario_id) REFERENCES usuario(id)
 );
-CREATE TABLE Playlist_history(
-  artista_id INT NOT NULL,
-  FOREIGN KEY (artista_id) REFERENCES artista(id),
+CREATE TABLE playlist_history(
+  usuario_id INT NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES usuario(id),
   cancao_id INT NOT NULL,
   FOREIGN KEY (cancao_id) REFERENCES cancao(id)
 ) engine = InnoDB;
+INSERT INTO
+  plano (nome, valor)
+VALUES
+  ('gratuito', 0),
+  ('familiar', 7.99),
+  ('universitário', 5.99);
