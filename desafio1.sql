@@ -33,8 +33,8 @@ CREATE TABLE artiste_followed(
   artista_id INT NOT NULL,
   FOREIGN KEY (artista_id) REFERENCES artista(id),
   usuario_id INT NOT NULL,
-  FOREIGN KEY (usuario_id) REFERENCES usuario(id)
-  PRIMARY KEY  (artista_id,usuario_id)	
+  FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+  PRIMARY KEY (artista_id,usuario_id)	
 );
 CREATE TABLE playlist_history(
   usuario_id INT NOT NULL,
