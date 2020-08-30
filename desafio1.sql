@@ -39,7 +39,8 @@ CREATE TABLE playlist_history(
   usuario_id INT NOT NULL,
   FOREIGN KEY (usuario_id) REFERENCES usuario(id),
   cancao_id INT NOT NULL,
-  FOREIGN KEY (cancao_id) REFERENCES cancao(id)
+  FOREIGN KEY (cancao_id) REFERENCES cancao(id),
+  PRIMARY KEY  (usuario_id,cancao_id)	
 ) engine = InnoDB;
 INSERT INTO
   plano (nome, valor)
