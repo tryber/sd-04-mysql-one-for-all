@@ -95,7 +95,7 @@ INSERT INTO
       ('Words Of Her Life', 5),
       ('Without My Streets', 5);
     INSERT INTO
-      artiste_followed (artista_id, usuario_id)
+      artiste_followed (usuario_id, artista_id,)
     VALUES
       (1, 1),
       (1, 4),

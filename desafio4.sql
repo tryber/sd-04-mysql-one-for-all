@@ -9,9 +9,9 @@ SELECT
       id = SpotifyClone.artiste_followed.artista_id
   ) AS artista,
   COUNT(artista_id) AS seguidores
-FROM
-  SpotifyClone.artiste_followed
-group by
+GROUP BY
   artista_id
+ORDER BY
+  seguidores DESC
 LIMIT
   3
