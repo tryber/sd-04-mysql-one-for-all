@@ -276,7 +276,7 @@ describe('Queries de seleção', () => {
         {
           faturamento_maximo: '7.99',
           faturamento_medio: '3.50',
-          faturamento_minimo: '0.00',
+          faturamento_minimo: '0.00', 
           faturamento_total: '13.98',
         },
       ];
