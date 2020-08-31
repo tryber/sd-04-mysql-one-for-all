@@ -18,8 +18,8 @@ FOREIGN KEY (plano_id) REFERENCES planos (id)
 ) engine = InnoDB;
 
 CREATE TABLE artista (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE album (
@@ -54,9 +54,9 @@ PRIMARY KEY (usuario_id, cancoes_id)
 
 INSERT INTO planos (tipo, valor)
 VALUES
-	('gratuito', 0),
-    ('universitário', 5.99),
-    ('familiar', 7.99);
+('gratuito', 0),
+('universitário', 5.99),
+('familiar', 7.99);
     
 INSERT INTO usuario (nome, idade, plano_id)
 VALUES
