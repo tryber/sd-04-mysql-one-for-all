@@ -1,6 +1,6 @@
 USE SpotifyClone;
 
-CREATE VIEW desafio_2 AS
+CREATE VIEW estatisticas_musicais AS
 SELECT
   count(cancao_id) AS cancoes,
   (
