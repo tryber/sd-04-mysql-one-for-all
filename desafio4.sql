@@ -1,4 +1,4 @@
-DROP VIEW top_3_artistas;
+-- DROP VIEW top_3_artistas;
 
 CREATE VIEW top_3_artistas AS
 SELECT a.nome AS artista,
