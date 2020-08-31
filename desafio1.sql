@@ -85,7 +85,7 @@ CREATE TABLE artistas_seguidores (
 artista_id INT NOT NULL,
 usuario_id INT NOT NULL,
 FOREIGN KEY (artista_id) REFERENCES artistas (artista_id),
-FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
+FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id) ON DELETE CASCADE,
 PRIMARY KEY(artista_id, usuario_id)
 ) engine = InnoDB;
 
@@ -102,7 +102,7 @@ VALUES (1, 1),
 CREATE TABLE cancoes_reproduzidas (
 usuario_id INT NOT NULL,
 cancao_id INT NOT NULL,
-FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
+FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id) ON DELETE CASCADE,
 FOREIGN KEY (cancao_id) REFERENCES cancoes (cancao_id),
 PRIMARY KEY(usuario_id, cancao_id)
 ) engine = InnoDB;
