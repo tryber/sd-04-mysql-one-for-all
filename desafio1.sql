@@ -79,7 +79,7 @@ INSERT INTO
       ('Soul For Us', 1),
       ('Reflections Of Magic', 1),
       ('Dance With Her Own', 1),
-      ('Troubles Of My Inner Fire"', 2),
+      ('Troubles Of My Inner Fire', 2),
       ('Time Fireworks', 2),
       ('Magic Circus', 3),
       ('ExubeHoney, So Do Irant', 3),
