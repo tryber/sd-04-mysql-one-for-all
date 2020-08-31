@@ -8,12 +8,12 @@ SELECT
     WHERE
       id = SpotifyClone.playlist_history.cancao_id
   ) AS cancao,
-  COUNT(cancao_id) AS seguidores
+  COUNT(cancao_id) AS reproducoes
 FROM
   playlist_history
 GROUP BY
   cancao_id
 order by
-  seguidores DESC
+  reproducoes DESC
 LIMIT
   2
