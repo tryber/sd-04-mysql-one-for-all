@@ -1,9 +1,9 @@
 CREATE VIEW faturamento_atual AS
 SELECT
-  CONVERT(ROUND(MIN(plan_values), 2), char) AS `faturamento_minimo`,
-  CONVERT(ROUND(MAX(plan_values), 2), CHAR) AS `faturamento_maximo`,
-  CONVERT(ROUND(AVG(plan_values), 2), CHAR) AS `faturamento_medio`,
-  CONVERT(ROUND(SUM(plan_values), 2), CHAR) AS `faturamento_total`
+  ROUND(MIN(plan_values), 2) AS `faturamento_minimo`,
+  ROUND(MAX(plan_values), 2) AS `faturamento_maximo`,
+  ROUND(AVG(plan_values), 2) AS `faturamento_medio`,
+  ROUND(SUM(plan_values), 2) AS `faturamento_total`
 FROM
   (
     SELECT
