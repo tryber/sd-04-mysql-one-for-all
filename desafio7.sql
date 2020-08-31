@@ -20,4 +20,5 @@ SELECT
 FROM
   SpotifyClone.album
 ORDER BY
-  seguidores DESC;
+  seguidores DESC,
+  artista;
