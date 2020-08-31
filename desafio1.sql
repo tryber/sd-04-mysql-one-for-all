@@ -92,15 +92,15 @@ VALUES
   ('Without My Streets', 5, 4);
 
 CREATE TABLE seguindo_artistas(
-  artista_id INT NOT NULL,
   usuario_id INT NOT NULL,
+  artista_id INT NOT NULL,
   PRIMARY KEY (`artista_id`, `usuario_id`),
   CONSTRAINT FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artistas` (`artista_id`),
   CONSTRAINT FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`)
 );
 
 INSERT INTO
-  seguindo_artistas (artista_id, usuario_id)
+  seguindo_artistas (usuario_id, artista_id)
 VALUES
   (1, 1),
   (1, 4),
