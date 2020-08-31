@@ -69,7 +69,7 @@ VALUES
   ('Envious', 1),
   ('Exuberant', 1),
   ('Hallowed Steam', 2),
-  ('Exuberant', 1),
+  ('Incandescent', 1),
   ('Temporary Culture', 4);
 INSERT INTO
   cancao (
