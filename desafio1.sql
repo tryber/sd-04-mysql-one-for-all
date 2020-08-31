@@ -36,7 +36,7 @@ album_id INT NOT NULL,
 FOREIGN KEY (album_id) REFERENCES album (id)
 ) engine = InnoDB;
 
-CREATE TABLE seguindo_artista (
+CREATE TABLE seguindo_artistas (
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
 FOREIGN KEY (usuario_id) REFERENCES usuario (id),
@@ -101,7 +101,7 @@ VALUES
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
     
-INSERT INTO seguindo_artista (usuario_id, artista_id)
+INSERT INTO seguindo_artistas (usuario_id, artista_id)
 VALUES
 (1, 1),
 (1, 4),
