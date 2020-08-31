@@ -98,7 +98,7 @@ Algumas coisas devem seguir um padrão pré-estabelecido para que os teste de co
 
   * Ou seja, suponha que para poder acessar a base de dados feita neste projeto você tenha `root` como seu nome de pessoa usuária, `password` como senha e `localhost` como host. Logo, você executaria:
     ```sh
-    MYSQL_USER=root MYSQL_PASSWORD=password HOSTNAME=localhost npm test
+    MYSQL_USER=root MYSQL_PASSWORD=421360 HOSTNAME=localhost npm test
     ```
 
   * Usando o exemplo anterior de base, suponha que você não tenha setado uma senha para `root`. Neste caso, você executaria:
