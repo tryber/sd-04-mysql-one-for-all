@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS SpotifyClone;
+  DROP DATABASE IF EXISTS SpotifyClone;
 CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 CREATE TABLE plano(
@@ -69,7 +69,7 @@ VALUES
   ('Envious', 1),
   ('Exuberant', 1),
   ('Hallowed Steam', 2),
-  ('Incandescent', 1),
+  ('Incandescent', 3),
   ('Temporary Culture', 4);
 INSERT INTO
   cancao (nome, album_id)
