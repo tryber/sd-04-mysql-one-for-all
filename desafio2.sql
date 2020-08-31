@@ -5,4 +5,4 @@ CREATE VIEW estatisticas_musicais AS
 (SELECT COUNT(*) FROM SpotifyClone.album) AS albuns
 );
 
-SELECT * FROM estatisticas_musicais;
+-- SELECT * FROM estatisticas_musicais;
