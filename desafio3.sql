@@ -1,7 +1,5 @@
 USE SpotifyClone;
 
-DROP VIEW IF EXISTS historico_reproducao_usuarios;
-
 CREATE VIEW historico_reproducao_usuarios AS (
   SELECT
     u.nome AS usuario,
