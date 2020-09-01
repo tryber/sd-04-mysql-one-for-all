@@ -37,14 +37,14 @@ VALUES
 -- ======================================== CANCOES =======================================
 CREATE TABLE cancoes(
 cancao_id INT PRIMARY KEY AUTO_INCREMENT,
-cancoes VARCHAR(30) NOT NULL,
+cancao VARCHAR(30) NOT NULL,
 album_id INT NOT NULL,
 artista_id INT NOT NULL,
 FOREIGN KEY (album_id) REFERENCES albuns(album_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 );
 
-INSERT INTO cancoes(cancoes, album_id, artista_id)
+INSERT INTO cancoes(cancao_id, cancao, album_id, artista_id)
 VALUES 
 (1, 'Soul For Us', 1, 1),
 (2, 'Reflections Of Magic', 1, 1),
