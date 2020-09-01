@@ -98,6 +98,7 @@ VALUES
 CREATE TABLE seguindo_artistas(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
+PRIMARY KEY (usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 );
@@ -117,6 +118,7 @@ VALUES
 CREATE TABLE historico_de_reproducoes(
 usuario_id INT NOT NULL,
 cancao_id INT NOT NULL,
+PRIMARY KEY (usuario_id, cancao_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 );
