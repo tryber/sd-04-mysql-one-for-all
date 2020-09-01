@@ -11,10 +11,10 @@ FROM
         SELECT
           valor
         FROM
-          SpotifyClone.plans
+          SpotifyClone.planos
         WHERE
-          plans.plano_id = users.plano_id
+          planos.plano_id = usuarios.plano_id
       ) AS plan_values
     FROM
-      SpotifyClone.users
+      SpotifyClone.usuarios
   ) AS A;

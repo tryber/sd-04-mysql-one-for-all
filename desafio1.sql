@@ -2,42 +2,42 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE plans(
+CREATE TABLE planos(
   plano_id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(200) NOT NULL,
-  valor DECIMAL(6, 2) NOT NULL
+  nome VARCHAR(200) NOT NULL,
+  valor DECIMAL(6,2) NOT NULL
 );
 
 INSERT INTO
-  plans (name, valor)
+  planos (nome, valor)
 VALUES
   ('gratuito', 0),
   ('familiar', 7.99),
   ('universitario', 5.99);
 
-CREATE TABLE users(
-  user_id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(200) NOT NULL,
+CREATE TABLE usuarios(
+  usuario_id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(200) NOT NULL,
   idade INT NOT NULL,
   plano_id INT NOT NULL,
-  CONSTRAINT FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`plans` (`plano_id`)
+  CONSTRAINT FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`planos` (`plano_id`)
 );
 
 INSERT INTO
-  users (name, idade, plano_id)
+  usuarios (nome, idade, plano_id)
 VALUES
   ('Thati', 23, 1),
   ('Cintia', 35, 2),
   ('Bill', 20, 3),
   ('Roger', 45, 1);
 
-CREATE TABLE artists(
-  artist_id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(200) NOT NULL
+CREATE TABLE artistas(
+  artista_id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(200) NOT NULL
 );
 
 INSERT INTO
-  artists (name)
+  artistas (nome)
 VALUES
   ('Walter Phoenix'),
   ('Peter Strong'),
@@ -46,13 +46,13 @@ VALUES
 
 CREATE TABLE albuns(
   album_id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(200) NOT NULL,
-  artist_id INT NOT NULL,
-  CONSTRAINT FOREIGN KEY (`artist_id`) REFERENCES `SpotifyClone`.`artists` (`artist_id`)
+  nome VARCHAR(200) NOT NULL,
+  artista_id INT NOT NULL,
+  CONSTRAINT FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
 );
 
 INSERT INTO
-  albuns (name, artist_id)
+  albuns (nome, artista_id)
 VALUES
   ('Envious', 1),
   ('Exuberant', 1),
@@ -60,17 +60,17 @@ VALUES
   ('Incandescent', 3),
   ('Temporary Culture', 4);
 
-CREATE TABLE songs(
+CREATE TABLE cancoes(
   cancao_id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(200) NOT NULL,
+  nome VARCHAR(200) NOT NULL,
   album_id INT NOT NULL,
-  artist_id INT NOT NULL,
-  CONSTRAINT FOREIGN KEY (`artist_id`) REFERENCES `SpotifyClone`.`artists` (`artist_id`),
+  artista_id INT NOT NULL,
+  CONSTRAINT FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artistas` (`artista_id`),
   CONSTRAINT FOREIGN KEY (`album_id`) REFERENCES `SpotifyClone`.`albuns` (`album_id`)
 );
 
 INSERT INTO
-  songs (name, album_id, artist_id)
+  cancoes (nome, album_id, artista_id)
 VALUES
   ('Soul For Us', 1, 1),
   ('Reflections Of Magic', 1, 1),
@@ -91,16 +91,16 @@ VALUES
   ('Words Of Her Life', 5, 4),
   ('Without My Streets', 5, 4);
 
-CREATE TABLE following(
-  user_id INT NOT NULL,
-  artist_id INT NOT NULL,
-  PRIMARY KEY (`artist_id`, `user_id`),
-  CONSTRAINT FOREIGN KEY (`artist_id`) REFERENCES `SpotifyClone`.`artists` (`artist_id`),
-  CONSTRAINT FOREIGN KEY (`user_id`) REFERENCES `SpotifyClone`.`users` (`user_id`)
+CREATE TABLE seguindo_artistas(
+  usuario_id INT NOT NULL,
+  artista_id INT NOT NULL,
+  PRIMARY KEY (`artista_id`, `usuario_id`),
+  CONSTRAINT FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artistas` (`artista_id`),
+  CONSTRAINT FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`)
 );
 
 INSERT INTO
-  following (user_id, artist_id)
+  seguindo_artistas (usuario_id, artista_id)
 VALUES
   (1, 1),
   (1, 4),
@@ -111,16 +111,16 @@ VALUES
   (3, 1),
   (4, 4);
 
-CREATE TABLE history(
-  user_id INT NOT NULL,
+CREATE TABLE historico_de_reproducoes(
+  usuario_id INT NOT NULL,
   cancao_id INT NOT NULL,
-  PRIMARY KEY (`user_id`, `cancao_id`),
-  CONSTRAINT FOREIGN KEY (`user_id`) REFERENCES `SpotifyClone`.`users` (`user_id`),
-  CONSTRAINT `fk_users_has_songs_songs1` FOREIGN KEY (`cancao_id`) REFERENCES `SpotifyClone`.`songs` (`cancao_id`)
+  PRIMARY KEY (`usuario_id`, `cancao_id`),
+  CONSTRAINT FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`),
+  CONSTRAINT `fk_usuarios_has_cancoes_cancoes1` FOREIGN KEY (`cancao_id`) REFERENCES `SpotifyClone`.`cancoes` (`cancao_id`)
 );
 
 INSERT INTO
-  history (user_id, cancao_id)
+  historico_de_reproducoes (usuario_id, cancao_id)
 VALUES
   (1, 1),
   (1, 6),

@@ -3,9 +3,9 @@ SELECT
   count(cancao_id) AS cancoes,
   (
     SELECT
-      count(artist_id)
+      count(artista_id)
     FROM
-      SpotifyClone.artists
+      SpotifyClone.artistas
   ) AS artistas,
   (
     SELECT
@@ -14,4 +14,4 @@ SELECT
       SpotifyClone.albuns
   ) AS albuns
 FROM
-  SpotifyClone.songs;
+  SpotifyClone.cancoes;

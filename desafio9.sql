@@ -1,27 +1,15 @@
 USE SpotifyClone;
+DELIMITER $$
 
-DELIMITER $$ 
-CREATE PROCEDURE albuns_do_artista(IN name VARCHAR(45)) BEGIN
-SELECT
-  (
-    SELECT
-      name
-    FROM
-      SpotifyClone.artists
-    WHERE
-      albuns.artist_id = artists.artist_id
-  ) AS artista,
-  name AS album
-FROM
-  SpotifyClone.albuns
-WHERE
-  albuns.artist_id = (
-    SELECT
-      artist_id
-    FROM
-      SpotifyClone.artists
-    WHERE
-      artists.name = name
+CREATE PROCEDURE albuns_do_artista(IN name VARCHAR(45))
+BEGIN
+  SELECT
+    (SELECT nome FROM SpotifyClone.artistas WHERE albuns.artista_id = artistas.artista_id) AS artista,
+    nome AS album
+  FROM SpotifyClone.albuns
+  WHERE albuns.artista_id = (
+    SELECT artista_id FROM SpotifyClone.artistas WHERE artistas.nome = name
   );
+END $$
 
-END $$ DELIMITER;
+DELIMITER ;

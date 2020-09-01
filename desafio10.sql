@@ -1,20 +1,20 @@
 USE SpotifyClone;
 DELIMITER $$
-USE `SpotifyClone` $$
-
-CREATE FUNCTION quantidade_musicas_no_historico(num int) 
-RETURNS INT READS SQL DATA 
-BEGIN 
+USE `SpotifyClone`$$
+CREATE FUNCTION quantidade_musicas_no_historico(num int) RETURNS INT READS SQL DATA
+BEGIN
 DECLARE quantidade INT;
-SELECT
-  COUNT(*) 
+SELECT 
+    COUNT(*) 
 INTO quantidade FROM
-  SpotifyClone.history
+    SpotifyClone.historico_de_reproducoes
+
 WHERE
-  user_id = num;
 
-RETURN quantidade;
+usuario_id
+  = num;
+  RETURN quantidade;
 
-END $$ 
+END $$
 
-DELIMITER;
+DELIMITER ;
