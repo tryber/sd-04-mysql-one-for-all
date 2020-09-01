@@ -5,9 +5,9 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE `plan`(
-	`plan_id` INT PRIMARY KEY AUTO_INCREMENT,
-	`plan_name` VARCHAR(50) NOT NULL,
-	`plan_price` DECIMAL(3, 2) NOT NULL
+`plan_id` INT PRIMARY KEY AUTO_INCREMENT,
+`plan_name` VARCHAR(50) NOT NULL,
+`plan_price` DECIMAL(3, 2) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE `user`(
@@ -60,7 +60,7 @@ VALUES
 ('universitário', 5.99);
 
 INSERT INTO `user`
-  (user_name, `user_age`, `plan_id`)
+(user_name, `user_age`, `plan_id`)
 VALUES
 ('Thati', 23, 1),
 ('Cintia', 35, 2),
@@ -68,15 +68,15 @@ VALUES
 ('Roger', 45, 1);
 
 INSERT INTO `artist`
-  (`artist_name`)
+(`artist_name`)
 VALUES
-  ('Walter Phoenix'),
-  ('Peter Strong'),
-  ('Lance Day'),
-  ('Freedie Shannon');
+('Walter Phoenix'),
+('Peter Strong'),
+('Lance Day'),
+('Freedie Shannon');
   
 INSERT INTO `album`
-  (`album_name`,`artist_id`)
+(`album_name`,`artist_id`)
 VALUES
 ('Envious', 1),
 ('Exuberant', 1),
@@ -85,7 +85,7 @@ VALUES
 ('Temporary Culture', 4);
 
 INSERT INTO `song`
-  (`song_name`,`album_id`)
+(`song_name`,`album_id`)
 VALUES
 ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
@@ -107,7 +107,7 @@ VALUES
 ('Without My Streets', 5);
 
 INSERT INTO `followed_artist`
-  (`user_id`,`artist_id`)
+(`user_id`,`artist_id`)
 VALUES
 (1, 1),
 (1, 4),
@@ -119,7 +119,7 @@ VALUES
 (4, 4);
 
 INSERT INTO `song_history`
-  (`user_id`,`song_id`)
+(`user_id`,`song_id`)
 VALUE
 (1,1),
 (1, 6),
