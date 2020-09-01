@@ -61,7 +61,7 @@ VALUES
 
 INSERT INTO song (song_name)
 VALUES
-	('Soul For Us'),
+('Soul For Us'),
     ('Reflections Of Magic'),
     ('Dance With Her Own'),
     ('Troubles Of My Inner Fire'),
@@ -82,7 +82,7 @@ VALUES
     
 INSERT INTO artist (artist_name)
 VALUES
-	('Walter Phoenix'),
+('Walter Phoenix'),
     ('Peter Strong'),
     ('Lance Day'),
     ('Freedie Shannon');
