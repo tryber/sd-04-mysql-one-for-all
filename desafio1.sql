@@ -15,8 +15,6 @@ VALUES
 (3, 'Lance Day'),
 (4, 'Freedie Shannon');
 
-select * from artistas;
-
 -- ======================================== ALBUNS =======================================
 CREATE TABLE albuns(
 album_id INT PRIMARY KEY AUTO_INCREMENT,
