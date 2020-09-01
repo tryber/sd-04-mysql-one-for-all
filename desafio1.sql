@@ -26,7 +26,7 @@ CREATE TABLE artistas(
 ) engine = InnoDB;
 
 CREATE TABLE usuario_artista(
-	usuario_id INT NOT NULL,
+	  usuario_id INT NOT NULL,
     artista_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (artista_id) REFERENCES artistas(id),
@@ -34,21 +34,21 @@ CREATE TABLE usuario_artista(
 ) engine = InnoDB;
 
 CREATE TABLE albuns(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+  	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     artista_id INT NOT NULL,
     FOREIGN KEY (artista_id) REFERENCES artistas(id)
 ) engine = InnoDB;
 
 CREATE TABLE musicas(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	  id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     album_id INT NOT NULL,
     FOREIGN KEY (album_id) REFERENCES albuns(id)
 ) engine = InnoDB;
 
 CREATE TABLE historico_reproducao(
-	usuario_id INT NOT NULL,
+	  usuario_id INT NOT NULL,
     musica_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (musica_id) REFERENCES musicas(id),
