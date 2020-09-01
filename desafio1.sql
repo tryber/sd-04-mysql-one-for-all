@@ -1,43 +1,57 @@
 DROP DATABASE IF EXISTS SpotifyClone;
 
-CREATE DATABASE IF NOT EXISTS SpotifyClone;
+CREATE DATABASE
+IF NOT EXISTS SpotifyClone;
 
 USE SpotifyClone;
 
 CREATE TABLE planos(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(100) NOT NULL,
-  valor DECIMAL(4, 2) NOT NULL
+  nome VARCHAR
+(100) NOT NULL,
+  valor DECIMAL
+(4, 2) NOT NULL
 );
 
 CREATE TABLE artistas(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(100) NOT NULL
+  nome VARCHAR
+(100) NOT NULL
 );
 
 CREATE TABLE albuns(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(255) NOT NULL,
+  nome VARCHAR
+(255) NOT NULL,
   artista_id INT NOT NULL,
-  FOREIGN KEY(artista_id) REFERENCES artistas(id)
+  FOREIGN KEY
+(artista_id) REFERENCES artistas
+(id)
 );
 
 CREATE TABLE cancoes (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(255) NOT NULL,
+  nome VARCHAR
+(255) NOT NULL,
   album_id INT NOT NULL,
-  FOREIGN KEY(album_id) REFERENCES albuns(id)
+  FOREIGN KEY
+(album_id) REFERENCES albuns
+(id)
 );
 
 CREATE TABLE usuarios(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(100) NOT NULL,
+  nome VARCHAR
+(100) NOT NULL,
   idade INT,
   plano_id INT NOT NULL,
-  FOREIGN KEY(plano_id) REFERENCES planos(id)
+  FOREIGN KEY
+(plano_id) REFERENCES planos
+(id)
 );
 
-CREATE TABLE usuarios_cancoes(
+CREATE TABLE usuarios_cancoes
+(
   usuario_id INT NOT NULL,
   cancao_id INT NOT NULL,
   FOREIGN KEY(usuario_id) REFERENCES usuarios(id),
@@ -45,7 +59,8 @@ CREATE TABLE usuarios_cancoes(
   PRIMARY KEY (usuario_id, cancao_id)
 );
 
-CREATE TABLE usuarios_artistas (
+CREATE TABLE usuarios_artistas
+(
   usuario_id INT NOT NULL,
   artista_id INT NOT NULL,
   FOREIGN KEY (artista_id) REFERENCES artistas (id),
@@ -69,7 +84,8 @@ VALUES
   (4, 'Roger', 45, 1);
 
 INSERT INTO
-  artistas (nome)
+  artistas
+  (nome)
 VALUES
   ('Walter Phoenix'),
   ('Peter strong'),
@@ -77,7 +93,8 @@ VALUES
   ('Freedie Shannon');
 
 INSERT INTO
-  `usuarios_artistas`
+  `
+usuarios_artistas`
 VALUES
   (1, 1),
   (1, 3),
@@ -107,17 +124,19 @@ VALUES
   (5, 'Home Forever', 4),
   (6, 'Words Of Her Life', 5),
   (7, 'Reflections Of Magic', 1),
-  (8, 'Honey, Let\'s Be Silly', 4),
+  (8, 'Honey, Let\'
+s Be Silly', 4),
   (9, 'Troubles Of My Inner', 2),
-  (10, 'Dance With Her Own', 1),
+  (10, 'Dance
+With Her Own', 1),
   (11, 'Without My Streets', 5),
   (12, 'Celebration Of More', 4),
   (13, 'Time Fireworks', 2),
   (14, 'Honey, So Do I', 3),
   (15, 'Sweetie, Let\'s Go Wild', 3),
-  (16, 'She Knows', 3),
-  (17, 'Fantasy For Me', 4),
-  (18, 'Rock His Everything', 4);
+(16, 'She Knows', 3),
+(17, 'Fantasy For Me', 4),
+(18, 'Rock His Everything', 4);
 
 INSERT INTO
   usuarios_cancoes
