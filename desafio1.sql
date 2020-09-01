@@ -1,7 +1,5 @@
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
-USE SpotifyClone;
-
 CREATE TABLE `usuarios` (
   `idusuario` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` varchar(45) NOT NULL,
@@ -13,6 +11,13 @@ CREATE TABLE `usuarios` (
   REFERENCES `planos(idplano)`
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO usuarios(usuario, idade, idplano)
+VALUES
+('Thati', 23, 1),
+('Cintia', 35, 2),
+('Bill', 20, 3),
+('Roger', 45, 4);
+
 CREATE TABLE `artistas` (
   `idartista` int(11) NOT NULL AUTO_INCREMENT,
   `artista` varchar(45) NOT NULL,
@@ -21,9 +26,6 @@ CREATE TABLE `artistas` (
   UNIQUE KEY `idartista_UNIQUE` (`idartista`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO usuarios(usuario, idade, idplano)
-VALUES
-('Thati', 23, 1);
 
 CREATE TABLE `seguindo_artista` (
   `idartista` int(11) NOT NULL,
@@ -72,3 +74,5 @@ CREATE TABLE `cancoes` (
   CONSTRAINT FK_AlbumID FOREIGN KEY (`idalbum`)
   REFERENCES `albuns(idalbum)`
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+USE SpotifyClone;
