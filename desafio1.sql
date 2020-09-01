@@ -45,7 +45,7 @@ CREATE TABLE artistas_seguidos(
   PRIMARY KEY(usuario_id, artistas_id)
 ) ENGINE=INNODB;
 
-CREATE TABLE historico_reproducao_usuarios(
+CREATE TABLE historico_reproducao(
   usuario_id INT NOT NULL,
   cancoes_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuario(id),
@@ -120,7 +120,7 @@ VALUES
   (4, 4);
 
 INSERT INTO
-  historico_reproducao_usuarios (usuario_id, cancoes_id)
+  historico_reproducao (usuario_id, cancoes_id)
 VALUES
   (1, 1),
   (1, 6),
