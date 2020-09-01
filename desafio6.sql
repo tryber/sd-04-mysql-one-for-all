@@ -1,4 +1,4 @@
-DROP VIEW faturamento_atual;
+-- DROP VIEW faturamento_atual;
 
 CREATE VIEW faturamento_atual AS
 SELECT
@@ -10,4 +10,4 @@ FROM SpotifyClone.planos AS p
 JOIN SpotifyClone.usuario AS u
 ON u.plano_id = p.id;
 
-SELECT * FROM faturamento_atual;
+-- SELECT * FROM faturamento_atual;
