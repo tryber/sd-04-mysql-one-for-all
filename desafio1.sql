@@ -1,7 +1,6 @@
 DROP DATABASE IF EXISTS SpotifyClone;
 
-CREATE DATABASE
-IF NOT EXISTS SpotifyClone;
+CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
 USE SpotifyClone;
 
@@ -93,8 +92,7 @@ VALUES
   ('Freedie Shannon');
 
 INSERT INTO
-  `
-usuarios_artistas`
+  usuarios_artistas
 VALUES
   (1, 1),
   (1, 3),
