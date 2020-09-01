@@ -68,21 +68,18 @@ CREATE TABLE albuns_cancoes (
 )  ENGINE=INNODB;
 
 INSERT INTO planos (plano, valor_plano)
-VALUES
-	('gratuito', 0),
+VALUES ('gratuito', 0),
     ('universitário', 5.99),
     ('familiar', 7.99);
 
 INSERT INTO usuarios (usuario, idade, plano_id)
-VALUES
-	('Thati', 23, 1),
+VALUES ('Thati', 23, 1),
     ('Cintia', 35, 3),
     ('Bill', 20, 2),
     ('Roger', 45, 1);
     
 INSERT INTO cancoes (cancao)
-VALUES
-	('Soul For Us'),
+VALUES ('Soul For Us'),
     ('Reflections Of Magic'),
     ('Dance With Her Own'),
     ('Troubles Of My Inner Fire'),
@@ -102,8 +99,7 @@ VALUES
     ('Without My Streets');
 
 INSERT INTO historico_reprod (cancao_id, usuario_id)
-VALUES 
-	(1, 1),
+VALUES (1, 1),
     (2, 1),
     (3, 1),
     (4, 1),
@@ -119,23 +115,20 @@ VALUES
     (12, 4);
 
 INSERT INTO artistas(artista)
-VALUES
-	('Walter Phoenix'),
+VALUES ('Walter Phoenix'),
     ('Freedie Shannon'),
     ('Lance Day'),
     ('Peter Strong');
 
 INSERT INTO albuns(album, artista_id)
-VALUES
-	('Envious', 1),
+VALUES ('Envious', 1),
     ('Exuberant', 1),
     ('Hallowed Steam', 4),
     ('Incandescent', 3),
     ('Temporary Culture', 2);
     
 INSERT INTO seguidores_artistas(artista_id, usuario_id)
-VALUES
-	(1, 1),
+VALUES (1, 1),
     (2, 1),
     (3, 1),
     (1, 2),
@@ -145,8 +138,7 @@ VALUES
     (2, 4);
     
 INSERT INTO albuns_cancoes(album_id, cancao_id)
-VALUES 
-	(1, 1),
+VALUES (1, 1),
     (1, 7),
     (1, 10),
     (2, 9),
