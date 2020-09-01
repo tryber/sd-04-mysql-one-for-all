@@ -125,7 +125,7 @@ VALUES
 ('Thang Of Thunder', 5),
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
-    
+
 INSERT INTO SpotifyClone.historico_reproducao (usuario_id, cancao_id) 
 VALUES 
 (1, 1),
@@ -142,7 +142,7 @@ VALUES
 (4, 3),
 (4, 18),
 (4, 11);
- 
+
 INSERT INTO SpotifyClone.artista_seguido (usuario_id, artista_id) 
 VALUES 
 (1, 1),
