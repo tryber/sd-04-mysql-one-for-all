@@ -21,38 +21,38 @@ CREATE TABLE usuarios(
 ) engine = InnoDB;
 
 CREATE TABLE artistas(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(100) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE usuario_artista(
-	  usuario_id INT NOT NULL,
-    artista_id INT NOT NULL,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (artista_id) REFERENCES artistas(id),
-    PRIMARY KEY (usuario_id, artista_id)
+usuario_id INT NOT NULL,
+artista_id INT NOT NULL,
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+FOREIGN KEY (artista_id) REFERENCES artistas(id),
+PRIMARY KEY (usuario_id, artista_id)
 ) engine = InnoDB;
 
 CREATE TABLE albuns(
-  	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    artista_id INT NOT NULL,
-    FOREIGN KEY (artista_id) REFERENCES artistas(id)
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL,
+artista_id INT NOT NULL,
+FOREIGN KEY (artista_id) REFERENCES artistas(id)
 ) engine = InnoDB;
 
 CREATE TABLE musicas(
-	  id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    album_id INT NOT NULL,
-    FOREIGN KEY (album_id) REFERENCES albuns(id)
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL,
+album_id INT NOT NULL,
+FOREIGN KEY (album_id) REFERENCES albuns(id)
 ) engine = InnoDB;
 
 CREATE TABLE historico_reproducao(
-	  usuario_id INT NOT NULL,
-    musica_id INT NOT NULL,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (musica_id) REFERENCES musicas(id),
-    PRIMARY KEY (usuario_id, musica_id)
+usuario_id INT NOT NULL,
+musica_id INT NOT NULL,
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+FOREIGN KEY (musica_id) REFERENCES musicas(id),
+PRIMARY KEY (usuario_id, musica_id)
 ) engine = InnoDB;
 
 -- POPULANDO TABELAS
