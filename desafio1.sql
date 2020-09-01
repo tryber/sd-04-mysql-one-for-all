@@ -13,7 +13,7 @@ CREATE TABLE plan(
 ) engine = InnoDB;
 
 CREATE TABLE user(
-    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    `user_id` INT PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR
 (100) NOT NULL,
     user_age INT NOT NULL,
@@ -51,24 +51,24 @@ CREATE TABLE song(
 ) engine = InnoDB;
 
 CREATE TABLE followed_artist(
-    user_id INT NOT NULL,
-    artist_id INT NOT NULL,
+    `user_id` INT NOT NULL,
+    `artist_id` INT NOT NULL,
     PRIMARY KEY (`user_id`,`artist_id`),
     CONSTRAINT FOREIGN KEY
-(user_id) REFERENCES user
-(user_id),
+(`user_id`) REFERENCES user
+(`user_id`),
     CONSTRAINT FOREIGN KEY
-(artist_id) REFERENCES artist
-(artist_id)    
+(`artist_id`) REFERENCES artist
+(`artist_id`)    
 ) engine = InnoDB;
 
 CREATE TABLE song_history(
-user_id INT NOT NULL,
+`user_id` INT NOT NULL,
     song_id INT NOT NULL,
     PRIMARY KEY (`user_id`,`song_id`),
     CONSTRAINT FOREIGN KEY
-(user_id) REFERENCES user
-(user_id),
+(`user_id`) REFERENCES user
+(`user_id`),
     CONSTRAINT FOREIGN KEY
 (song_id) REFERENCES song
 (song_id)
