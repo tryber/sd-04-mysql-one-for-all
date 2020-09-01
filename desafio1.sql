@@ -50,7 +50,7 @@ CREATE TABLE song (
     FOREIGN KEY (id_artist)
         REFERENCES artist (id),
     FOREIGN KEY (id_album)
-        REFERENCES song (id)
+        REFERENCES album (id)
 )  ENGINE=INNODB;
 
 CREATE TABLE playback_history (
