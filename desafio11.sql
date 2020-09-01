@@ -1,4 +1,4 @@
-CREATE VIEW songs_premium AS
+CREATE VIEW cancoes_premium AS
 SELECT
   c.name AS name,
   count(*) AS reproducoes
