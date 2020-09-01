@@ -1,5 +1,5 @@
 USE SpotifyClone;
-CREATE VIEW estatiscas_musicais
+CREATE VIEW estatisticas_musicais
 AS
   (SELECT
     (SELECT
