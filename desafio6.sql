@@ -13,4 +13,3 @@ SELECT
     SUM(P.valor_plano) AS 'faturamento_total'
 FROM
     SpotifyClone.plano AS P INNER JOIN SpotifyClone.usuario AS U ON P.plano_id = U.plano_id;
-    
