@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS SpotifyClone;
-CREATE DATABASE IF NOT EXISTS SpotifyClone;
+CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE `planos` (
@@ -31,7 +31,6 @@ VALUES
 ('Bill', 20, 3),
 ('Roger', 45, 1);
 
-drop database SpotifyClone;
 CREATE TABLE artistas (
   idartista INT PRIMARY KEY AUTO_INCREMENT,
   artista varchar(45) NOT NULL
@@ -63,25 +62,6 @@ VALUES
   (3, 2),
   (3, 1),
   (4, 4);
-
-CREATE TABLE historico(
-  idusuario INT NOT NULL,
-  idcancao INT NOT NULL,
-  CONSTRAINT FOREIGN KEY (idusuario) REFERENCES usuarios(idusuario),
-  CONSTRAINT FOREIGN KEY (idcancao) REFERENCES cancoes(idcancao),
-  PRIMARY KEY(idusuario, idcancao)
-) ENGINE=INNODB;
-
-INSERT INTO
-  historico (idusuario, idcancao)
-VALUES
-  (1, 1),
-  (1, 6),
-  (1, 14),
-  (1, 16),
-  (2, 13),
-  (2, 17),
-  (2, 2);
 
 CREATE TABLE albuns(
   idalbum INT PRIMARY KEY AUTO_INCREMENT,
@@ -129,3 +109,23 @@ VALUES
   ('Thang Of Thunder', 5, 4),
   ('Words Of Her Life', 5, 4),
   ('Without My Streets', 5, 4);
+  
+  CREATE TABLE historico(
+  idusuario INT NOT NULL,
+  idcancao INT NOT NULL,
+  CONSTRAINT FOREIGN KEY (idusuario) REFERENCES usuarios(idusuario),
+  CONSTRAINT FOREIGN KEY (idcancao) REFERENCES cancoes(idcancao),
+  PRIMARY KEY(idusuario, idcancao)
+) ENGINE=INNODB;
+
+INSERT INTO
+  historico (idusuario, idcancao)
+VALUES
+  (1, 1),
+  (1, 6),
+  (1, 14),
+  (1, 16),
+  (2, 13),
+  (2, 17),
+  (2, 2);
+  
