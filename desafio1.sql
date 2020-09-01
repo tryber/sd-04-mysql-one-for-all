@@ -1,9 +1,6 @@
 DROP DATABASE IF EXISTS SpotifyClone;
-
 CREATE DATABASE SpotifyClone;
-
 USE SpotifyClone;
-
 CREATE TABLE `plan`
 (
     `plan_id` INT PRIMARY KEY AUTO_INCREMENT,
@@ -12,7 +9,6 @@ CREATE TABLE `plan`
     `plan_price` DECIMAL
 (3, 2) NOT NULL
 ) engine = InnoDB;
-
 CREATE TABLE `user`
 (
     `user_id` INT PRIMARY KEY AUTO_INCREMENT,
@@ -24,37 +20,32 @@ CREATE TABLE `user`
 (`plan_id`) REFERENCES `plan`
 (`plan_id`)
 ) engine = InnoDB;
-
 CREATE TABLE `artist`
 (
     `artist_id` INT PRIMARY KEY AUTO_INCREMENT,
     `artist_name` VARCHAR
-(100) NOT NULL    
+(100) NOT NULL
 ) engine = InnoDB;
-
 CREATE TABLE `album`
 (
     `album_id` INT PRIMARY KEY AUTO_INCREMENT,
     `album_name` VARCHAR
 (100) NOT NULL,
-    `artist_id` INT NOT NULL,    
+    `artist_id` INT NOT NULL,
     CONSTRAINT FOREIGN KEY
 (`artist_id`) REFERENCES `artist`
-(`artist_id`)    
+(`artist_id`)
 ) engine = InnoDB;
-
-
 CREATE TABLE `song`
 (
     `song_id` INT PRIMARY KEY AUTO_INCREMENT,
     `song_name` VARCHAR
 (100) NOT NULL,
-    `album_id` INT NOT NULL,       
+    `album_id` INT NOT NULL,
     CONSTRAINT FOREIGN KEY
 (`album_id`) REFERENCES `album`
-(`album_id`)    
+(`album_id`)
 ) engine = InnoDB;
-
 CREATE TABLE `followed_artist`
 (
     `user_id` INT NOT NULL,
@@ -66,9 +57,8 @@ CREATE TABLE `followed_artist`
 (`user_id`),
     CONSTRAINT FOREIGN KEY
 (`artist_id`) REFERENCES `artist`
-(`artist_id`)    
+(`artist_id`)
 ) engine = InnoDB;
-
 CREATE TABLE `song_history`
 (
 `user_id` INT NOT NULL,
@@ -82,54 +72,36 @@ CREATE TABLE `song_history`
 (`song_id`) REFERENCES `song`
 (`song_id`)
 ) engine = InnoDB;
-
 INSERT INTO `plan`
-  (`plan_name`, `plan_price
-
-`)
+  (`plan_name`, `plan_price`)
 VALUES
 ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
-
 INSERT INTO `user`
-  (user_name, `user_age`, `plan_id
-
-`)
+  (user_name, `user_age`, `plan_id`)
 VALUES
 ('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
 ('Roger', 45, 1);
-
 INSERT INTO `artist`
-  (`
-artist_name`)
+  (`artist_name`)
 VALUES
   ('Walter Phoenix'),
   ('Peter Strong'),
   ('Lance Day'),
   ('Freedie Shannon');
-
 INSERT INTO `album`
-  (`
-album_name`,
-`artist_id
-`
-)
+  (`album_name`,`artist_id`)
 VALUES
 ('Envious', 1),
 ('Exuberant', 1),
 ('Hallowed Steam', 2),
 ('Incandescent', 3),
 ('Temporary Culture', 4);
-
-
 INSERT INTO `song`
-  (`
-song_name`,
-`album_id
-`)
+  (`song_name`,`album_id`)
 VALUES
 ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
@@ -149,15 +121,8 @@ VALUES
 ('Thang Of Thunder', 5),
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
-
-
 INSERT INTO `followed_artist`
-  (
-`
-user_id`,
-`artist_id
-`
-)
+  (`user_id`,`artist_id`)
 VALUES
 (1, 1),
 (1, 4),
@@ -167,18 +132,10 @@ VALUES
 (3, 2),
 (3, 1),
 (4, 4);
-
-
 INSERT INTO `song_history`
-  (
-`
-user_id`,
-`song_id
-`)
+  (`user_id`,`song_id`)
 VALUE
-(1,
-1
-),
+(1,1),
 (1, 6),
 (1, 14),
 (1, 16),
