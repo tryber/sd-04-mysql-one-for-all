@@ -4,101 +4,101 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE plan(
-    plan_id INT PRIMARY KEY AUTO_INCREMENT,
-    plan_name VARCHAR
+CREATE TABLE `plan`(
+    `plan_id` INT PRIMARY KEY AUTO_INCREMENT,
+    `plan_name` VARCHAR
 (50) NOT NULL,
-    plan_price DECIMAL
+    `plan_price` DECIMAL
 (3, 2) NOT NULL
 ) engine = InnoDB;
 
-CREATE TABLE user(
+CREATE TABLE `user`(
     `user_id` INT PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR
 (100) NOT NULL,
-    user_age INT NOT NULL,
-    plan_id INT NOT NULL,
+    `user_age` INT NOT NULL,
+    `plan_id` INT NOT NULL,
     CONSTRAINT FOREIGN KEY
-(plan_id) REFERENCES plan
-(plan_id)
+(`plan_id`) REFERENCES `plan`
+(`plan_id`)
 ) engine = InnoDB;
 
-CREATE TABLE artist(
-    artist_id INT PRIMARY KEY AUTO_INCREMENT,
-    artist_name VARCHAR
+CREATE TABLE `artist`(
+    `artist_id` INT PRIMARY KEY AUTO_INCREMENT,
+    `artist_name` VARCHAR
 (100) NOT NULL    
 ) engine = InnoDB;
 
-CREATE TABLE album(
-    album_id INT PRIMARY KEY AUTO_INCREMENT,
-    album_name VARCHAR
+CREATE TABLE `album`(
+    `album_id` INT PRIMARY KEY AUTO_INCREMENT,
+    `album_name` VARCHAR
 (100) NOT NULL,
-    artist_id INT NOT NULL,    
+    `artist_id` INT NOT NULL,    
     CONSTRAINT FOREIGN KEY
-(artist_id) REFERENCES artist
-(artist_id)    
+(`artist_id`) REFERENCES `artist`
+(`artist_id`)    
 ) engine = InnoDB;
 
 
-CREATE TABLE song(
-    song_id INT PRIMARY KEY AUTO_INCREMENT,
-    song_name VARCHAR
+CREATE TABLE `song`(
+    `song_id` INT PRIMARY KEY AUTO_INCREMENT,
+    `song_name` VARCHAR
 (100) NOT NULL,
-    album_id INT NOT NULL,       
+    `album_id` INT NOT NULL,       
     CONSTRAINT FOREIGN KEY
-(album_id) REFERENCES album
-(album_id)    
+(`album_id`) REFERENCES `album`
+(`album_id`)    
 ) engine = InnoDB;
 
-CREATE TABLE followed_artist(
+CREATE TABLE `followed_artist`(
     `user_id` INT NOT NULL,
     `artist_id` INT NOT NULL,
     PRIMARY KEY (`user_id`,`artist_id`),
     CONSTRAINT FOREIGN KEY
-(`user_id`) REFERENCES user
+(`user_id`) REFERENCES `user`
 (`user_id`),
     CONSTRAINT FOREIGN KEY
-(`artist_id`) REFERENCES artist
+(`artist_id`) REFERENCES `artist`
 (`artist_id`)    
 ) engine = InnoDB;
 
-CREATE TABLE song_history(
+CREATE TABLE `song_history`(
 `user_id` INT NOT NULL,
-    song_id INT NOT NULL,
+    `song_id` INT NOT NULL,
     PRIMARY KEY (`user_id`,`song_id`),
     CONSTRAINT FOREIGN KEY
-(`user_id`) REFERENCES user
+(`user_id`) REFERENCES `user`
 (`user_id`),
     CONSTRAINT FOREIGN KEY
-(song_id) REFERENCES song
-(song_id)
+(`song_id`) REFERENCES `song`
+(`song_id`)
 ) engine = InnoDB;
 
-INSERT INTO plan
-  (plan_name, plan_price)
+INSERT INTO `plan`
+  (`plan_name`, `plan_price`)
 VALUES
   ('gratuito', 0),
   ('familiar', 7.99),
   ('universitário', 5.99);
 
-INSERT INTO user
-  (user_name, user_age, plan_id)
+INSERT INTO `user`
+  (user_name, `user_age`, `plan_id`)
 VALUES
   ('Thati', 23, 1),
   ('Cintia', 35, 2),
   ('Bill', 20, 3),
   ('Roger', 45, 1);
 
-INSERT INTO artist
-  (artist_name)
+INSERT INTO `artist`
+  (`artist_name`)
 VALUES
   ('Walter Phoenix'),
   ('Peter Strong'),
   ('Lance Day'),
   ('Freedie Shannon');
 
-INSERT INTO album
-  (album_name, artist_id)
+INSERT INTO `album`
+  (`album_name`, artist_id)
 VALUES
   ('Envious', 1),
   ('Exuberant', 1),
@@ -107,8 +107,8 @@ VALUES
   ('Temporary Culture', 4);
 
 
-INSERT INTO song
-  (song_name)
+INSERT INTO `song`
+  (`song_name`)
 VALUES
   ('Soul For Us', 1),
   ('Reflections Of Magic', 1),
@@ -130,7 +130,7 @@ VALUES
   ('Without My Streets', 5);
 
 
-INSERT INTO followed_artist
+INSERT INTO `followed_artist`
   (user_id, artist_id)
 VALUES
   (1, 1),
@@ -143,8 +143,8 @@ VALUES
   (4, 4);
 
 
-INSERT INTO song_history
-  (user_id, song_id)
+INSERT INTO `song_history`
+  (user_id, `song_id`)
 VALUE
 (1,
 1
