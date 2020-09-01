@@ -12,4 +12,3 @@ WHERE art.artista = artista;
 END $$
 
 DELIMITER ;
-    
