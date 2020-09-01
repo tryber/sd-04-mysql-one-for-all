@@ -1,0 +1,7 @@
+DELIMITER $$
+CREATE TRIGGER trigger_usuario_delete
+BEFORE DELETE ON user
+FOR EACH ROW
+BEGIN
+END; $$
+DELIMITER;
