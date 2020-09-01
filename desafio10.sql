@@ -17,7 +17,3 @@ BEGIN
 END $$
 
 DELIMITER ;
-
--- Chamando Function:
---  CREATE VIEW BILL AS SELECT u.id from SpotifyClone.user AS u WHERE u.name = 'Bill';
-SELECT quantidade_musicas_no_historico(3);
