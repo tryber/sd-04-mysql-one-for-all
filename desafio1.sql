@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
+USE SpotifyClone;
+
 CREATE TABLE `usuarios` (
   `idusuario` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` varchar(45) NOT NULL,
