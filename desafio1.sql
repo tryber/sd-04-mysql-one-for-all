@@ -64,16 +64,6 @@ VALUES
   (3, 1),
   (4, 4);
 
-CREATE TABLE `historico` (
-  `idusuario` int(11) NOT NULL,
-  `idcancao` int(11),
-  PRIMARY KEY (`idcancao`, `idusuario`),
-  CONSTRAINT FK_UsuarioID FOREIGN KEY (`idusuario`)
-  REFERENCES `usuarios(idusuario)`,
-  CONSTRAINT FK_CancaoID FOREIGN KEY (`idcancao`)
-  REFERENCES `cancoes(idcancao)`
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE historico(
   idusuario INT NOT NULL,
   idcancao INT NOT NULL,
