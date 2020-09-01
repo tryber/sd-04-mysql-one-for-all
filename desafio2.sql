@@ -16,4 +16,3 @@ SELECT
             SpotifyClone.albuns) AS 'albuns'
 FROM
     SpotifyClone.cancoes;
-    
