@@ -5,4 +5,3 @@ SELECT COUNT(DISTINCT s.name) AS artistas,
 FROM Artists AS art
   JOIN albums AS alb ON alb.artist_id = art.id
   JOIN Songs AS s ON s.album_id = alb.id;
-  
