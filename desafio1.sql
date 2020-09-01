@@ -44,25 +44,26 @@ FOREIGN KEY (album_id) REFERENCES albuns(album_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 );
 
-INSERT INTO cancoes(cancao_id, cancoes, album_id, artista_id)
+INSERT INTO cancoes(cancoes, album_id, artista_id)
 VALUES 
 (1, 'Soul For Us', 1, 1),
 (2, 'Reflections Of Magic', 1, 1),
 (3, 'Dance With Her Own', 1, 1),
 (4, 'Troubles Of My Inner Fire', 2, 1),
-(5, 'Magic Circus', 3, 2),
-(6, 'Honey, So Do I', 3, 2),
-(7, "Sweetie, Let's Go Wild", 3, 2),
-(8, 'She Knows', 3, 2),
-(9, 'Fantasy For Me', 4, 3),
-(10, 'Celebration Of More', 4, 3),
-(11, 'Rock His Everything', 4, 3),
-(12, 'Home Forever', 4, 3),
-(13, 'Diamond Power', 4, 3),
-(14, "Honey, Let's Be Silly", 4, 3),
-(15, 'Thang Of Thhuder', 5, 4),
-(16, 'Words Of Her Life', 5, 4),
-(17, 'Without My Streets', 5, 4);
+(5, 'Time Fireworks', 2, 1),
+(6, 'Magic Circus', 3, 2),
+(7, 'Honey, So Do I', 3, 2),
+(8, "Sweetie, Let's Go Wild", 3, 2),
+(9, 'She Knows', 3, 2),
+(10, 'Fantasy For Me', 4, 3),
+(11, 'Celebration Of More', 4, 3),
+(12, 'Rock His Everything', 4, 3),
+(13, 'Home Forever', 4, 3),
+(14, 'Diamond Power', 4, 3),
+(15, "Honey, Let's Be Silly", 4, 3),
+(16, 'Thang Of Thhuder', 5, 4),
+(17, 'Words Of Her Life', 5, 4),
+(18, 'Without My Streets', 5, 4);
 
 -- ======================================== PLANOS =======================================
 CREATE TABLE planos(
@@ -123,16 +124,16 @@ FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 INSERT INTO historico_de_reproducoes(usuario_id, cancao_id)
 VALUES 
 (1, 1),
-(1, 5),
-(1, 13),
-(1, 15),
-(2, 12),
-(2, 16),
+(1, 6),
+(1, 14),
+(1, 16),
+(2, 13),
+(2, 17),
 (2, 2),
-(2, 14),
+(2, 15),
 (3, 4),
-(3, 15),
-(3, 5),
+(3, 16),
+(3, 6),
 (4, 3),
-(4, 17),
-(4, 10);
+(4, 18),
+(4, 11);
