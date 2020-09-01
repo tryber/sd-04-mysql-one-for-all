@@ -114,7 +114,7 @@ VALUES
 INSERT INTO playback_history (user_id, song_id)
 VALUES
     (1,	1),
-    (1,	2),
+    (1,	6),
     (1,	14),
     (1,	16),
     (2,	13),
