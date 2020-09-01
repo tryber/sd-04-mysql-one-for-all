@@ -79,7 +79,7 @@ VALUES
 INSERT INTO artist (name)
 VALUES
     ("Walter Phoenix"),
-    ("PETER Strong"),
+    ("Peter Strong"),
     ("Lance Day"),
     ("Freedie Shannon");
     
