@@ -10,7 +10,7 @@ RETURNS INT READS SQL DATA
 
 BEGIN
     DECLARE total INTEGER;
-    SELECT COUNT(h.id_user) FROM SpotifyClone.playback_history AS h
+    SELECT COUNT(*) FROM SpotifyClone.playback_history AS h
     WHERE h.id_user = userID
     INTO total;
     RETURN total;
@@ -19,5 +19,5 @@ END $$
 DELIMITER ;
 
 -- Chamando Function:
--- CREATE VIEW BILL AS SELECT u.id from SpotifyClone.user AS u WHERE u.name = 'Bill';
+--  CREATE VIEW BILL AS SELECT u.id from SpotifyClone.user AS u WHERE u.name = 'Bill';
 SELECT quantidade_musicas_no_historico(3);
