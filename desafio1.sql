@@ -4,7 +4,6 @@ CREATE TABLE `usuarios` (
   `idusuario` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` varchar(45) NOT NULL,
   `idade` int(11) NOT NULL,
-  `historico` varchar(200) NOT NULL,
   `idplano` int(11) NOT NULL,
   PRIMARY KEY (`idusuario`),
   UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
@@ -19,6 +18,10 @@ CREATE TABLE `artistas` (
   PRIMARY KEY (`idartista`),
   UNIQUE KEY `idartista_UNIQUE` (`idartista`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO usuarios(usuario, idade, idplano)
+VALUES
+('Thati', 23, 1);
 
 CREATE TABLE `seguindo_artista` (
   `idartista` int(11) NOT NULL,
@@ -43,8 +46,7 @@ CREATE TABLE `historico` (
 CREATE TABLE `planos` (
   `idplano` int(11) NOT NULL AUTO_INCREMENT,
   `plano` varchar(45) NOT NULL,
-  `valor_plano` int(11) NOT NULL,
-  `idusuario` int(11),
+  `valor_plano` DECIMAL(6,2)NOT NULL,
   PRIMARY KEY (`idplano`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -68,4 +70,3 @@ CREATE TABLE `cancoes` (
   CONSTRAINT FK_AlbumID FOREIGN KEY (`idalbum`)
   REFERENCES `albuns(idalbum)`
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
