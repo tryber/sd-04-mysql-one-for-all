@@ -40,3 +40,4 @@ exclude_patterns:
   - "images/"
   - "tests/"
   - "node_modules/"
+  - schema.mwb
