@@ -114,4 +114,3 @@ INSERT INTO Users_following (user_id, artist_id)
 (SELECT 3, id FROM Artists WHERE name IN ('Peter Strong', 'Walter Phoenix'))
   UNION ALL
 (SELECT 4, id FROM Artists WHERE name = 'Freedie Shannon');
-
