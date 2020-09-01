@@ -23,7 +23,7 @@ VALUES
 ('Walter Phoenix'),
 ('Peter Strong'),
 ('Lance Day'),
-('Freedia Shannon');
+('Freedie Shannon');
 
 CREATE TABLE album (
 id_album SMALLINT PRIMARY KEY AUTO_INCREMENT,
