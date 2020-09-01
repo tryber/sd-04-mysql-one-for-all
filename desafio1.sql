@@ -6,7 +6,7 @@ CREATE TABLE `planos` (
   `plano` varchar(45) NOT NULL,
   `valor_plano` DECIMAL(6,2)NOT NULL,
   PRIMARY KEY (`idplano`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 
 INSERT INTO
   planos (plano, valor_plano)
@@ -15,30 +15,26 @@ VALUES
   ('familiar', 7.99),
   ('universitario', 5.99);
   
-CREATE TABLE `usuarios` (
-  `idusuario` int(11) AUTO_INCREMENT,
-  `usuario` varchar(45) NOT NULL,
-  `idade` int(11) NOT NULL,
-  `idplano` int,
-  PRIMARY KEY (`idusuario`),
-  UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
-  CONSTRAINT  FOREIGN KEY (`idplano`)
-  REFERENCES `planos(idplano)`
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE usuarios(
+  idusuario INT PRIMARY KEY AUTO_INCREMENT,
+  usuario VARCHAR(50) NOT NULL,
+  idade INT NOT NULL,
+  idplano INT NOT NULL,
+  FOREIGN KEY (idplano) REFERENCES planos(idplano)
+) ENGINE=INNODB;
 
 INSERT INTO usuarios(usuario, idade, idplano)
 VALUES
 ('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
-('Roger', 45, 4);
+('Roger', 45, 1);
 
-CREATE TABLE `artistas` (
-  `idartista` int(11) NOT NULL AUTO_INCREMENT,
-  `artista` varchar(45) NOT NULL,
-  PRIMARY KEY (`idartista`),
-  UNIQUE KEY `idartista_UNIQUE` (`idartista`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+drop database SpotifyClone;
+CREATE TABLE artistas (
+  idartista INT PRIMARY KEY AUTO_INCREMENT,
+  artista varchar(45) NOT NULL
+) ENGINE=InnoDB;
 
 INSERT INTO artistas(artista)
 VALUES
@@ -47,27 +43,25 @@ VALUES
   ('Lance Day'),
   ('Freedie Shannon');
 
-
-CREATE TABLE `seguindo_artista` (
-  `idartista` int(11) NOT NULL,
-  `idusuario` int(11),
-  PRIMARY KEY (`idartista`, `idusuario`),
-  CONSTRAINT FK_ArtistaID FOREIGN KEY (`idartista`)
-  REFERENCES `artista(idartista)`,
-  CONSTRAINT FK_UsuarioID FOREIGN KEY (`idusuario`)
-  REFERENCES `usuario(idusuario)`
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE seguindo_artista(
+  idartista INT NOT NULL,
+  idusuario INT NOT NULL,
+  CONSTRAINT FOREIGN KEY (idusuario) REFERENCES usuarios(idusuario),
+  CONSTRAINT FOREIGN KEY (idartista) REFERENCES artistas(idartista),
+  PRIMARY KEY(idusuario, idartista)
+) ENGINE=INNODB;
 
 INSERT INTO
   seguindo_artista (idusuario, idartista)
 VALUES
   (1, 1),
-  (1, 2),
+  (1, 4),
   (1, 3),
   (2, 1),
-  (2, 2),
   (2, 3),
-  (3, 1);
+  (3, 2),
+  (3, 1),
+  (4, 4);
 
 CREATE TABLE `historico` (
   `idusuario` int(11) NOT NULL,
@@ -78,6 +72,14 @@ CREATE TABLE `historico` (
   CONSTRAINT FK_CancaoID FOREIGN KEY (`idcancao`)
   REFERENCES `cancoes(idcancao)`
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE historico(
+  idusuario INT NOT NULL,
+  idcancao INT NOT NULL,
+  CONSTRAINT FOREIGN KEY (idusuario) REFERENCES usuarios(idusuario),
+  CONSTRAINT FOREIGN KEY (idcancao) REFERENCES cancoes(idcancao),
+  PRIMARY KEY(idusuario, idcancao)
+) ENGINE=INNODB;
 
 INSERT INTO
   historico (idusuario, idcancao)
@@ -90,15 +92,12 @@ VALUES
   (2, 17),
   (2, 2);
 
-
-CREATE TABLE `albuns` (
-  `idalbum` int(11) NOT NULL AUTO_INCREMENT,
-  `album` VARCHAR(300) NOT NULL,
-  `idartista` int(11) NOT NULL,
-  PRIMARY KEY (`idalbum`),
-  CONSTRAINT FK_ArtistaID FOREIGN KEY (`idartista`)
-  REFERENCES `artista(idartista)`
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE albuns(
+  idalbum INT PRIMARY KEY AUTO_INCREMENT,
+  album VARCHAR(50) NOT NULL,
+  idartista INT NOT NULL,
+  FOREIGN KEY (idartista) REFERENCES artistas(idartista)
+) ENGINE=INNODB;
 
 INSERT INTO
   albuns (album, idartista)
@@ -109,17 +108,14 @@ VALUES
   ('Incandescent', 3),
   ('Temporary Culture', 4);
 
-CREATE TABLE `cancoes` (
-  `idcancao` int(11) NOT NULL AUTO_INCREMENT,
-  `cancao` VARCHAR(300) NOT NULL,
-  `idartista` int(11) NOT NULL,
-  `idalbum` int(11) NOT NULL,
-  PRIMARY KEY (`idcancao`),
-  CONSTRAINT FK_AlbumID FOREIGN KEY (`idartista`)
-  REFERENCES `artistas(idartista)`,
-  CONSTRAINT FK_AlbumID FOREIGN KEY (`idalbum`)
-  REFERENCES `albuns(idalbum)`
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE cancoes (
+  idcancao INT PRIMARY KEY AUTO_INCREMENT,
+  cancao VARCHAR(300) NOT NULL,
+  idartista int NOT NULL,
+  idalbum int NOT NULL,
+  CONSTRAINT FOREIGN KEY (idartista) REFERENCES artistas(idartista),
+  CONSTRAINT FOREIGN KEY (idalbum) REFERENCES albuns(idalbum)
+) ENGINE=InnoDB;
 
 INSERT INTO
   cancoes (cancao, idalbum, idartista)
