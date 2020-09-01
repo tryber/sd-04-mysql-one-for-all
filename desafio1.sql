@@ -39,7 +39,7 @@ CREATE TABLE seguindo_artista (
         REFERENCES usuario (usuario_id),
     CONSTRAINT FOREIGN KEY (artista_id)
         REFERENCES artistas (artista_id),
-    PRIMARY KEY (usuario_id , artistas_id)
+    PRIMARY KEY (usuario_id , artista_id)
 )  ENGINE=INNODB;
 
 
@@ -47,7 +47,7 @@ CREATE TABLE albuns (
     album_id INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(50) NOT NULL,
     artista_id INT NOT NULL,
-    CONSTRAINT FOREIGN KEY (artista_i)
+    CONSTRAINT FOREIGN KEY (artista_id)
         REFERENCES artistas (artista_id)
 )  ENGINE=INNODB;
 
@@ -131,7 +131,7 @@ VALUES
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
 
-INSERT INTO historico_reproducoes (usuario_id, cancao_id)
+INSERT INTO historico_reproducoes (usuario_id, cancoes_id)
 VALUES
 (1, 1),
 (1, 6),
