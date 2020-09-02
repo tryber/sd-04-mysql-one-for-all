@@ -2,7 +2,7 @@ DELIMITER $$
 CREATE PROCEDURE albuns_do_artista(IN nome_artista VARCHAR(50))
 BEGIN
 SELECT 
-    a.nome AS teste, ab.nome AS album
+    a.nome AS artista, ab.nome AS album
 FROM
     album ab
         JOIN
