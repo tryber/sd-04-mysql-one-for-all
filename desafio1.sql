@@ -80,7 +80,7 @@ VALUES ('Thati', 23, 1),
 
 INSERT INTO cancoes (cancao)
 VALUES ('Soul For Us'),
-	('Magic Circus'),
+('Magic Circus'),
     ('Diamond Power'),
     ('Thang Of Thunder'),
     ('Home Forever'),
