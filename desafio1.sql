@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS SpotifyClone;
+
 CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
@@ -33,16 +35,16 @@ CREATE TABLE albuns (
 )engine = InnoDB;
 
 INSERT INTO albuns(album_nome, artista_id) 
- VALUES 
+VALUES 
 ('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4); 
  
 -- Canções
 CREATE TABLE cancoes (
- id_cancao INT NOT NULL AUTO_INCREMENT,
- titulo_cancao VARCHAR(30),
- album_id INT NOT NULL,
- PRIMARY KEY (id_cancao),
- CONSTRAINT FOREIGN KEY (album_id) REFERENCES albuns (album_id) 
+  id_cancao INT NOT NULL AUTO_INCREMENT,
+  titulo_cancao VARCHAR(30),
+  album_id INT NOT NULL,
+  PRIMARY KEY (id_cancao),
+  CONSTRAINT FOREIGN KEY (album_id) REFERENCES albuns (album_id) 
 );
 
 INSERT INTO cancoes(titulo_cancao, album_id)
