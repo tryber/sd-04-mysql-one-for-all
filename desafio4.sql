@@ -1,7 +1,7 @@
 CREATE VIEW top_3_artistas AS
-SELECT a.artistas_name artista, COUNT(s.id_usuario) seguidores
-FROM SpotifyClone.artistas a
-INNER JOIN SpotifyClone.seguindo_artistas s
+SELECT a.artistas_name AS artista, COUNT(s.id_usuario) AS seguidores
+FROM SpotifyClone.artistas AS a
+INNER JOIN SpotifyClone.seguindo_artistas AS s
 ON a.artistas_id = s.id_artistas
 GROUP BY artista
 ORDER BY seguidores DESC, artista
