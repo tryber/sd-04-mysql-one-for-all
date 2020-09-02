@@ -37,7 +37,7 @@ CREATE TABLE albuns (
 INSERT INTO albuns(album_nome, artista_id) 
 VALUES 
 ('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4); 
- 
+
 -- Canções
 CREATE TABLE cancoes (
   id_cancao INT NOT NULL AUTO_INCREMENT,
