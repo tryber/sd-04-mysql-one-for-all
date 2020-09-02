@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS SpotifyClone;
 
-CREATE DATABASE IF NOT EXISTS SpotifyClone;
+CREATE DATABASE
+IF NOT EXISTS SpotifyClone;
 
 USE SpotifyClone;
 
@@ -92,7 +93,7 @@ VALUES
   ('Freedie Shannon');
 
 INSERT INTO
-  usuarios_artistas
+  `usuarios_artistas`
 VALUES
   (1, 1),
   (1, 3),
@@ -122,19 +123,17 @@ VALUES
   (5, 'Home Forever', 4),
   (6, 'Words Of Her Life', 5),
   (7, 'Reflections Of Magic', 1),
-  (8, 'Honey, Let\'
-s Be Silly', 4),
+  (8, 'Honey, Let\'s Be Silly', 4),
   (9, 'Troubles Of My Inner', 2),
-  (10, 'Dance
-With Her Own', 1),
+  (10, 'Dance With Her Own', 1),
   (11, 'Without My Streets', 5),
   (12, 'Celebration Of More', 4),
   (13, 'Time Fireworks', 2),
   (14, 'Honey, So Do I', 3),
   (15, 'Sweetie, Let\'s Go Wild', 3),
-(16, 'She Knows', 3),
-(17, 'Fantasy For Me', 4),
-(18, 'Rock His Everything', 4);
+  (16, 'She Knows', 3),
+  (17, 'Fantasy For Me', 4),
+  (18, 'Rock His Everything', 4);
 
 INSERT INTO
   usuarios_cancoes
