@@ -1,4 +1,4 @@
-CREATE VIEW perf_artist AS
+CREATE VIEW perfil_artistas AS
   SELECT artists.name AS artista, a.name AS album, COUNT(*) as seguidores FROM artists
   INNER JOIN albums AS a
   ON a.artist_id = artists.artist_id
