@@ -1,11 +1,11 @@
-DROP SCHEMA SpotifyClone;
+DROP DATABASE SpotifyClone;
 
-CREATE SCHEMA IF NOT EXISTS `SpotifyClone` ;
+CREATE DATABASE SpotifyClone;
 
-USE `SpotifyClone` ;
+USE SpotifyClone ;
 
 
-CREATE TABLE   artista (
+CREATE TABLE artista (
   artista_id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL)
 ENGINE = InnoDB;
