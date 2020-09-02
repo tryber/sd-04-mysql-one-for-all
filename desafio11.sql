@@ -19,4 +19,6 @@ GROUP BY
   c.id
 ORDER BY
   reproducoes DESC,
-  nome;
+  nome 
+LIMIT 
+  7;
