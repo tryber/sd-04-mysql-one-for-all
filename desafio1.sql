@@ -1,4 +1,3 @@
-DROP DATABASE SpotifyClone;
 CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
