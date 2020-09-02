@@ -1,6 +1,6 @@
-DROP SCHEMA SpotifyClone;
+DROP DATABASE SpotifyClone;
 
-CREATE SCHEMA IF NOT EXISTS `SpotifyClone` ;
+CREATE DATABASE SpotifyClone;
 
 USE `SpotifyClone` ;
 
