@@ -38,6 +38,7 @@ CONSTRAINT `fk_album` FOREIGN KEY (album_id) REFERENCES album(id)
 CREATE TABLE history(
 user_id INT NOT NULL,
 song_id INT NOT NULL,
+PRIMARY KEY (user_id, song_id),
 CONSTRAINT `fk_userh` FOREIGN KEY (user_id) REFERENCES users(id),
 CONSTRAINT `fk_songh` FOREIGN KEY (song_id) REFERENCES songs(id)
 );
@@ -45,6 +46,7 @@ CONSTRAINT `fk_songh` FOREIGN KEY (song_id) REFERENCES songs(id)
 CREATE TABLE following(
 user_id INT NOT NULL,
 artist_id INT NOT NULL,
+PRIMARY KEY (user_id, artist_id),
 CONSTRAINT `fk_userf` FOREIGN KEY (user_id) REFERENCES users(id),
 CONSTRAINT `fk_artistf` FOREIGN KEY (artist_id) REFERENCES artist(id)
 );
