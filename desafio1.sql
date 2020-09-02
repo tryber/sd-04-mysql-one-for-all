@@ -1,18 +1,18 @@
-DROP DATABASE IF EXISTS SpotifyClone;
+DROP DATABASE SpotifyClone;
 
 CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
 -- Plano
-CREATE TABLE plano(
+CREATE TABLE planos(
   id_plano INT NOT NULL AUTO_INCREMENT,
   plano  VARCHAR(30) NOT NULL,
   valor_plano DECIMAL(4,2) NOT NULL,
   PRIMARY KEY (id_plano)  
 )engine = InnoDB;
 
-INSERT INTO SpotifyClone.plano(plano, valor_plano)
+INSERT INTO SpotifyClone.planos(plano, valor_plano)
 VALUES('gratuito',0), ('universitário',5.99), ('familiar',7.99);
 
 -- Artista
@@ -74,7 +74,7 @@ CREATE TABLE usuario (
   usuario_nome VARCHAR(50) NOT NULL,
   idade INT,
   id_plano INT NOT NULL,
-  CONSTRAINT FOREIGN KEY (id_plano) REFERENCES plano (id_plano),
+  CONSTRAINT FOREIGN KEY (id_plano) REFERENCES planos (id_plano),
   PRIMARY KEY (id_usuario)  
 )engine = InnoDB;
 
