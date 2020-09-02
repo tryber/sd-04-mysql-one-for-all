@@ -6,7 +6,7 @@
   "coluna_historico_de_reproducoes": "idusuario",
   "tabela_que_contem_historico_de_reproducoes": "historico",
   "coluna_seguindo_artistas": "idartista",
-  "tabela_que_contem_seguindo_artistas": "seguindo_artistas",
+  "tabela_que_contem_seguindo_artistas": "seguindo_artista",
   "coluna_artista": "artista",
   "tabela_que_contem_artista": "artistas",
   "coluna_album": "album",
