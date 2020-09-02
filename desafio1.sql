@@ -12,7 +12,7 @@ CREATE TABLE plano(
   PRIMARY KEY (id_plano)  
 )engine = InnoDB;
 
-INSERT INTO plano(plano, valor_plano)
+INSERT INTO SpotifyClone.plano(plano, valor_plano)
 VALUES('gratuito',0), ('universitário',5.99), ('familiar',7.99);
 
 -- Artista
@@ -22,7 +22,7 @@ CREATE TABLE artista (
   PRIMARY KEY (id_artista)
 )engine = InnoDB;
 
-INSERT INTO artista(artista_nome) 
+INSERT INTO SpotifyClone.artista(artista_nome) 
 VALUES('Walter Phoenix'),('Peter Strong'),('Lance Day'),('Freedie Shannon');
 
 -- Albuns
@@ -34,7 +34,7 @@ CREATE TABLE albuns (
   CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artista (id_artista)
 )engine = InnoDB;
 
-INSERT INTO albuns(album_nome, artista_id) 
+INSERT INTO SpotifyClone.albuns(album_nome, artista_id) 
 VALUES 
 ('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4); 
 
@@ -45,9 +45,9 @@ CREATE TABLE cancoes (
   album_id INT NOT NULL,
   PRIMARY KEY (id_cancao),
   CONSTRAINT FOREIGN KEY (album_id) REFERENCES albuns (album_id) 
-);
+)engine = InnoDB;
 
-INSERT INTO cancoes(titulo_cancao, album_id)
+INSERT INTO SpotifyClone.cancoes(titulo_cancao, album_id)
 VALUES
 ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
@@ -78,7 +78,7 @@ CREATE TABLE usuario (
   PRIMARY KEY (id_usuario)  
 )engine = InnoDB;
 
-INSERT INTO usuario (usuario_nome, idade, id_plano) 
+INSERT INTO SpotifyClone.usuario (usuario_nome, idade, id_plano) 
 VALUES('Thati', 23, 1), ('Cintia', 35, 3), ('Bill', 20, 2), ('Roger', 45, 1);
 
 -- Seguidores
@@ -90,7 +90,7 @@ CREATE TABLE artista_seguidores (
   CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artista (id_artista)
 )engine = InnoDB;
 
-INSERT INTO artista_seguidores(usuario_id, artista_id) 
+INSERT INTO SpotifyClone.artista_seguidores(usuario_id, artista_id) 
 VALUES
 (1, 1),
 (1, 3),
@@ -110,7 +110,7 @@ CREATE TABLE historico_reproducoes (
   CONSTRAINT FOREIGN KEY (id_cancao) REFERENCES cancoes (id_cancao)
 )engine = InnoDB;
 
-INSERT INTO historico_reproducoes(usuario_id, id_cancao)
+INSERT INTO SpotifyClone.historico_reproducoes(usuario_id, id_cancao)
 VALUES
 (1, 1),
 (1, 3),
