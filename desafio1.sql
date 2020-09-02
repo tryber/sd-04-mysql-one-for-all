@@ -79,22 +79,20 @@ insert into usuario (usuario_id, nome, idade, plano_id) values (1, 'Thati', 23,1
 (2,'Cintia',35,2),(3,'Bill',20,3),(4,'Roger',45,1);
 
 create table usuario_segue_artista (
-id int primary key auto_increment,
 usuario_id int not null,
 artista_id int not null,
-
+primary key (usuario_id,artista_id),
 constraint `FK_usuario_id` foreign key (usuario_id) references usuario(usuario_id),
 constraint `FK_artista_id` foreign key (artista_id) references artista(artista_id)
 );
 
-insert into usuario_segue_artista (usuario_id, artista_id) values (1,1),(1,3),(1,2),
-(2,1),(2,2),(3,4),(3,1),(4,3);
+insert into usuario_segue_artista (usuario_id, artista_id) 
+values (1,1),(1,3),(1,2),(2,1),(2,2),(3,4),(3,1),(4,3);
 
 create table historico_de_reproducoes (
-historico_id int primary key auto_increment,
 usuario_id int not null,
 cancao_id int not null,
-
+primary key(usuario_id,cancao_id),
 constraint `FK_historico_usuario_id` foreign key (usuario_id) references usuario(usuario_id),
 constraint `FK_cancao_id` foreign key (cancao_id) references cancoes(cancao_id)
 );
