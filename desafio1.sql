@@ -8,7 +8,7 @@ CREATE TABLE Plans (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(30) NOT NULL,
   price DECIMAL(5,2) NOT NULL
-) engine = InnoDB;
+);
 
 CREATE TABLE Users (
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -16,26 +16,26 @@ CREATE TABLE Users (
   age TINYINT,
   plan_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (plan_id) REFERENCES Plans(id)
-) engine = InnoDB;
+);
 
 CREATE TABLE Artists (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(30) NOT NULL
-) engine = InnoDB;
+);
 
 CREATE TABLE Albums (
   id INT PRIMARY KEY AUTO_INCREMENT,
   artist_id INT NOT NULL,
   name VARCHAR(30) NOT NULL,
   CONSTRAINT FOREIGN KEY (artist_id) REFERENCES Artists(id)
-) engine = InnoDB;
+);
 
 CREATE TABLE Songs (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(30) NOT NULL,
   album_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (album_id) REFERENCES Albums(id)
-) engine = InnoDB;
+);
 
 CREATE TABLE Songs_History (
   PRIMARY KEY(user_id, song_id),
@@ -43,7 +43,7 @@ CREATE TABLE Songs_History (
   song_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (song_id) REFERENCES Songs(id),
   CONSTRAINT FOREIGN KEY (user_id) REFERENCES Users(id)
-) engine = InnoDB;
+);
 
 CREATE TABLE Users_Following (
   PRIMARY KEY(user_id, artist_id),
@@ -51,7 +51,7 @@ CREATE TABLE Users_Following (
   artist_id INT NOT NULL,
   CONSTRAINT FOREIGN KEY (user_id) REFERENCES Users(id),
   CONSTRAINT FOREIGN KEY (artist_id) REFERENCES Artists(id)
-) engine = innoDB;
+);
 
 INSERT INTO Plans (name, price) VALUES 
 ('gratuito', 0),
