@@ -21,7 +21,6 @@ USE `SpotifyClone` ;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`album`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`album` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`album` (
   `album_id` INT NOT NULL AUTO_INCREMENT,
@@ -41,7 +40,6 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`artista`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`artista` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artista` (
   `artista_id` INT NOT NULL AUTO_INCREMENT,
@@ -56,7 +54,6 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`cançoes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`cançoes` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cançoes` (
   `musica_id` INT(11) NOT NULL auto_increment,
@@ -78,7 +75,6 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`historico`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`historico` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
   `usuario_id` INT NOT NULL,
@@ -104,7 +100,6 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`planos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`planos` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`planos` (
   `planos_id` INT NOT NULL AUTO_INCREMENT,
@@ -120,7 +115,6 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`usuarios`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`usuarios` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
