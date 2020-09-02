@@ -43,25 +43,6 @@ VALUES
   ('Lance Day'),
   ('Freedie Shannon');
 
-CREATE TABLE seguindo_artista(
-  idartista INT NOT NULL,
-  idusuario INT NOT NULL,
-  CONSTRAINT FOREIGN KEY (idusuario) REFERENCES usuarios(idusuario),
-  CONSTRAINT FOREIGN KEY (idartista) REFERENCES artistas(idartista),
-  PRIMARY KEY(idusuario, idartista)
-) ENGINE=INNODB;
-
-INSERT INTO
-  seguindo_artista (idusuario, idartista)
-VALUES
-  (1, 1),
-  (1, 4),
-  (1, 3),
-  (2, 1),
-  (2, 3),
-  (3, 2),
-  (3, 1),
-  (4, 4);
 
 CREATE TABLE albuns(
   idalbum INT PRIMARY KEY AUTO_INCREMENT,
@@ -109,6 +90,27 @@ VALUES
   ('Thang Of Thunder', 5, 4),
   ('Words Of Her Life', 5, 4),
   ('Without My Streets', 5, 4);
+  
+  
+CREATE TABLE seguindo_artista(
+  idusuario INT NOT NULL,
+  idartista INT NOT NULL,
+  PRIMARY KEY(idartista, idusuario),
+  CONSTRAINT FOREIGN KEY (idartista) REFERENCES artistas(idartista),
+  CONSTRAINT FOREIGN KEY (idusuario) REFERENCES usuarios(idusuario)
+) ENGINE=INNODB;
+
+INSERT INTO
+  seguindo_artista (idusuario, idartista)
+VALUES
+  (1, 1),
+  (1, 4),
+  (1, 3),
+  (2, 1),
+  (2, 3),
+  (3, 2),
+  (3, 1),
+  (4, 4);
   
   CREATE TABLE historico(
   idusuario INT NOT NULL,
