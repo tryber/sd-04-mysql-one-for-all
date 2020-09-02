@@ -106,7 +106,7 @@ INSERT INTO Songs_History (user_id, song_id)
   UNION ALL
 (SELECT 4, id FROM Songs WHERE name IN ('Dance With Her Own', 'Without My Streets', 'Celebration Of More'));
 
-INSERT INTO Users_following (user_id, artist_id)
+INSERT INTO Users_Following (user_id, artist_id)
 (SELECT 1, id FROM Artists WHERE name IN ('Walter Phoenix', 'Freedie Shannon', 'Lance Day'))
   UNION ALL
 (SELECT 2, id FROM Artists WHERE name IN ('Walter Phoenix', 'Lance Day'))
