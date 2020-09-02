@@ -124,7 +124,7 @@ VALUES
   INSERT INTO usuarios_cancoes (id_usuario, id_cancao)
 VALUES
   (1, 1),
-  (1, 3),
+  (1, 6),
   (1, 14),
   (1, 16),
   (2, 13),
