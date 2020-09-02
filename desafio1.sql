@@ -12,7 +12,7 @@ CREATE TABLE planos(
   PRIMARY KEY (id_plano)  
 )engine = InnoDB;
 
-INSERT INTO SpotifyClone.planos(plano, valor_plano)
+INSERT INTO planos(plano, valor_plano)
 VALUES('gratuito',0), ('universitário',5.99), ('familiar',7.99);
 
 -- Artista
@@ -22,7 +22,7 @@ CREATE TABLE artista (
   PRIMARY KEY (id_artista)
 )engine = InnoDB;
 
-INSERT INTO SpotifyClone.artista(artista_nome) 
+INSERT INTO artista(artista_nome) 
 VALUES('Walter Phoenix'),('Peter Strong'),('Lance Day'),('Freedie Shannon');
 
 -- Albuns
@@ -34,7 +34,7 @@ CREATE TABLE albuns (
   CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artista (id_artista)
 )engine = InnoDB;
 
-INSERT INTO SpotifyClone.albuns(album_nome, artista_id) 
+INSERT INTO albuns(album_nome, artista_id) 
 VALUES 
 ('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4); 
 
@@ -47,7 +47,7 @@ CREATE TABLE cancoes (
   CONSTRAINT FOREIGN KEY (album_id) REFERENCES albuns (album_id) 
 )engine = InnoDB;
 
-INSERT INTO SpotifyClone.cancoes(titulo_cancao, album_id)
+INSERT INTO cancoes(titulo_cancao, album_id)
 VALUES
 ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
@@ -78,7 +78,7 @@ CREATE TABLE usuario (
   PRIMARY KEY (id_usuario)  
 )engine = InnoDB;
 
-INSERT INTO SpotifyClone.usuario (usuario_nome, idade, id_plano) 
+INSERT INTO usuario (usuario_nome, idade, id_plano) 
 VALUES('Thati', 23, 1), ('Cintia', 35, 3), ('Bill', 20, 2), ('Roger', 45, 1);
 
 -- Seguidores
@@ -90,7 +90,7 @@ CREATE TABLE artista_seguidores (
   CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artista (id_artista)
 )engine = InnoDB;
 
-INSERT INTO SpotifyClone.artista_seguidores(usuario_id, artista_id) 
+INSERT INTO artista_seguidores(usuario_id, artista_id) 
 VALUES
 (1, 1),
 (1, 3),
@@ -110,18 +110,18 @@ CREATE TABLE historico_reproducoes (
   CONSTRAINT FOREIGN KEY (id_cancao) REFERENCES cancoes (id_cancao)
 )engine = InnoDB;
 
-INSERT INTO SpotifyClone.historico_reproducoes(usuario_id, id_cancao)
+INSERT INTO historico_reproducoes(usuario_id, id_cancao)
 VALUES
 (1, 1),
-(1, 3),
-(1, 4),
-(1, 5),
-(2, 4),
-(2, 5),
-(2, 1),
-(3, 2),
-(3, 5),
-(3, 3),
-(4, 1),
-(4, 5),
-(4, 4);
+(1, 6),
+(1, 14),
+(1, 16),
+(2, 13),
+(2, 17),
+(2, 15),
+(3, 4),
+(3, 16),
+(3, 6),
+(4, 3),
+(4, 18),
+(4, 11);
