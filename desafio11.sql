@@ -13,4 +13,5 @@ SELECT
 FROM
     cancoes AS c
 GROUP BY c.id
-ORDER BY reproducoes DESC, nome;
+ORDER BY reproducoes DESC, nome
+LIMIT 7;
