@@ -77,7 +77,7 @@ INSERT INTO albums (name, artist_id) VALUES ('Incandescent', 3);
 INSERT INTO albums (name, artist_id) VALUES ('Temporary Culture', 4);
 
 
-INSERT INTO songs (name, album_id
+INSERT INTO songs (name, album_id)
 VALUES
     ("Soul For Us", 1),
     ("Reflections Of Magic", 1),
