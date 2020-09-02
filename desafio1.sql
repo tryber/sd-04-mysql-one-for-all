@@ -72,7 +72,7 @@ INSERT INTO
   artistas (nome)
 VALUES
   ('Walter Phoenix'),
-  ('Peter strong'),
+  ('Peter Strong'),
   ('Lance Day'),
   ('Freedie Shannon');
 
