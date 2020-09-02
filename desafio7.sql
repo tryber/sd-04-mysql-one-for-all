@@ -21,4 +21,5 @@ FROM
   SpotifyClone.album
 ORDER BY
   seguidores DESC,
-  artista;
+  artista,
+  album;
