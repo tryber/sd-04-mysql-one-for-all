@@ -69,34 +69,34 @@ CREATE TABLE albuns_cancoes (
 
 INSERT INTO planos (plano, valor_plano)
 VALUES ('gratuito', 0),
-    ('universitário', 5.99),
-    ('familiar', 7.99);
+    ('familiar', 7.99),
+    ('universitário', 5.99);
 
 INSERT INTO usuarios (usuario, idade, plano_id)
 VALUES ('Thati', 23, 1),
-    ('Cintia', 35, 3),
-    ('Bill', 20, 2),
+    ('Cintia', 35, 2),
+    ('Bill', 20, 3),
     ('Roger', 45, 1);
-    
+
 INSERT INTO cancoes (cancao)
 VALUES ('Soul For Us'),
+	('Magic Circus'),
+    ('Diamond Power'),
+    ('Thang Of Thunder'),
+    ('Home Forever'),
+    ('Words Of Her Life'),
     ('Reflections Of Magic'),
-    ('Dance With Her Own'),
+    ("Honey, Let's Be Silly"),
     ('Troubles Of My Inner Fire'),
+    ('Dance With Her Own'),
+    ('Without My Streets'),
+    ('Celebration Of More'),
     ('Time Fireworks'),
-    ('Magic Circus'),
     ('Honey, So Do I'),
     ("Sweetie, Let's Go Wild"),
     ('She Knows'),
     ('Fantasy For Me'),
-    ('Celebration Of More'),
-    ('Rock His Everything'),
-    ('Home Forever'),
-    ('Diamond Power'),
-    ("Honey, Let's Be Silly"),
-    ('Thang Of Thunder'),
-    ('Words Of Her Life'),
-    ('Without My Streets');
+    ('Rock His Everything');
 
 INSERT INTO historico_reprod (cancao_id, usuario_id)
 VALUES (1, 1),
@@ -126,7 +126,7 @@ VALUES ('Envious', 1),
     ('Hallowed Steam', 4),
     ('Incandescent', 3),
     ('Temporary Culture', 2);
-    
+
 INSERT INTO seguidores_artistas(artista_id, usuario_id)
 VALUES (1, 1),
     (2, 1),
@@ -136,7 +136,7 @@ VALUES (1, 1),
     (4, 3),
     (1, 3),
     (2, 4);
-    
+
 INSERT INTO albuns_cancoes(album_id, cancao_id)
 VALUES (1, 1),
     (1, 7),
