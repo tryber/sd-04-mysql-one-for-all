@@ -10,23 +10,10 @@ CREATE TABLE planos(
   valor DECIMAL(6, 2) NOT NULL DEFAULT 0
 ) engine = InnoDB;
 
-INSERT INTO planos (plano, valor)
-  VALUES
-    ('gratuito', 0),
-    ('familiar', 7.99),
-    ('universitário', 5.99);
-
 CREATE TABLE artistas(
   id INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(50) NOT NULL
 ) engine = InnoDB;
-
-INSERT INTO artistas (nome)
-  VALUES
-    ('Walter Phoenix'),
-    ('Peter Strong'),
-    ('Lance Day'),
-    ('Freedie Shannon');
 
 CREATE TABLE usuarios(
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -36,19 +23,55 @@ CREATE TABLE usuarios(
   FOREIGN KEY (planos_id) REFERENCES planos (id)
 ) engine = InnoDB;
 
-INSERT INTO usuarios (nome, idade, planos_id)
-  VALUES
-    ('Thati', 23, 1),
-    ('Cintia', 35, 2),
-    ('Bill', 20, 3),
-    ('Roger', 45, 1);
-
 CREATE TABLE albuns(
   id INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(50) NOT NULL,
   artistas_id INT NOT NULL,
   FOREIGN KEY (artistas_id) REFERENCES artistas (id)
 ) engine = InnoDB;
+
+CREATE TABLE cancoes(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  albuns_id INT NOT NULL,
+  FOREIGN KEY (albuns_id) REFERENCES albuns (id)
+) engine = InnoDB;
+
+CREATE TABLE usuarios_seguindo_artistas(
+  usuarios_id INT NOT NULL,
+  artistas_id INT NOT NULL,
+  FOREIGN KEY (usuarios_id) REFERENCES usuarios (id),
+  FOREIGN KEY (artistas_id) REFERENCES artistas (id),
+  PRIMARY KEY (usuarios_id, artistas_id)
+) engine = InnoDB;
+
+CREATE TABLE historico_reproducoes(
+  cancoes_id INT NOT NULL,
+  usuarios_id INT NOT NULL,
+  FOREIGN KEY (cancoes_id) REFERENCES cancoes (id),
+  FOREIGN KEY (usuarios_id) REFERENCES usuarios (id),
+  PRIMARY KEY (cancoes_id, usuarios_id)
+) engine = InnoDB;
+
+INSERT INTO planos (plano, valor)
+  VALUES
+    ('gratuito', 0),
+    ('familiar', 7.99),
+    ('universitário', 5.99);
+
+INSERT INTO artistas (nome)
+  VALUES
+    ('Walter Phoenix'),
+    ('Peter Strong'),
+    ('Lance Day'),
+    ('Freedie Shannon');
+
+INSERT INTO usuarios (nome, idade, planos_id)
+  VALUES
+    ('Thati', 23, 1),
+    ('Cintia', 35, 2),
+    ('Bill', 20, 3),
+    ('Roger', 45, 1);
 
 INSERT INTO albuns (nome, artistas_id)
   VALUES
@@ -57,13 +80,6 @@ INSERT INTO albuns (nome, artistas_id)
     ('Hallowed Steam', 2),
     ('Incandescent', 3),
     ('Temporary Culture', 4);
-
-CREATE TABLE cancoes(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,
-  albuns_id INT NOT NULL,
-  FOREIGN KEY (albuns_id) REFERENCES albuns (id)
-) engine = InnoDB;
 
 INSERT INTO cancoes (nome, albuns_id)
   VALUES
@@ -86,14 +102,6 @@ INSERT INTO cancoes (nome, albuns_id)
     ('Words Of Her Life', 5),
     ('Without My Streets', 5);
 
-CREATE TABLE usuarios_seguindo_artistas(
-  usuarios_id INT NOT NULL,
-  artistas_id INT NOT NULL,
-  FOREIGN KEY (usuarios_id) REFERENCES usuarios (id),
-  FOREIGN KEY (artistas_id) REFERENCES artistas (id),
-  PRIMARY KEY (usuarios_id, artistas_id)
-) engine = InnoDB;
-
 INSERT INTO usuarios_seguindo_artistas (usuarios_id, artistas_id)
   VALUES
     (1, 1),
@@ -104,14 +112,6 @@ INSERT INTO usuarios_seguindo_artistas (usuarios_id, artistas_id)
     (3, 1),
     (3, 2),
     (4, 4);
-
-CREATE TABLE historico_reproducoes(
-  cancoes_id INT NOT NULL,
-  usuarios_id INT NOT NULL,
-  FOREIGN KEY (cancoes_id) REFERENCES cancoes (id),
-  FOREIGN KEY (usuarios_id) REFERENCES usuarios (id),
-  PRIMARY KEY (cancoes_id, usuarios_id)
-) engine = InnoDB;
 
 INSERT INTO historico_reproducoes (cancoes_id, usuarios_id)
   VALUES
