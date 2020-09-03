@@ -1,21 +1,15 @@
 DELIMITER $$
-CREATE FUNCTION quantidade_musicas_no_historico(nome_usuario VARCHAR(50))
+CREATE FUNCTION quantidade_musicas_no_historico(id_usuario int)
 RETURNS INT READS SQL DATA
 BEGIN
-DECLARE reproducoes INT;
+RETURN (
 SELECT 
     COUNT(cancao_id)
-INTO reproducoes FROM
+FROM
     historico_reproducao
 WHERE
-    (SELECT 
-            nome
-        FROM
-            usuario
-        WHERE
-            id = usuario_id) = nome_usuario
-GROUP BY usuario_id;
-RETURN reproducoes;
+    usuario_id = id_usuario
+GROUP BY usuario_id);
 
 END;$$
 DELIMITER ;
