@@ -1,5 +1,4 @@
-DROP VIEW IF EXISTS estatisticas_musicais;
-CREATE VIEW estatisticas_musicais AS
+CREATE VIEW historico_reproducao_usuarios AS
 SELECT u.name AS usuario,
   s.name AS nome
 FROM Songs_History AS sh
