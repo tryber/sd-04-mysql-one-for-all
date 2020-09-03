@@ -6,3 +6,5 @@ CREATE TRIGGER trigger_usuario_delete
     DELETE FROM SpotifyClone.historico_reproducoes WHERE usuarios_id = OLD.id;
   END
 $$ DELIMITER ;
+
+DELETE FROM SpotifyClone.usuarios WHERE nome = 'Thati';
