@@ -3,4 +3,5 @@ SELECT MIN(price) AS faturamento_minimo,
   MAX(price) AS faturamento_maximo,
   ROUND(AVG(price), 2) AS faturamento_medio,
   SUM(price) AS faturamento_total
-FROM Plans;
+FROM Plans as p
+JOIN Users as u ON p.id = u.plan_id;
