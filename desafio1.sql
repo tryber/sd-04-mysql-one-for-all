@@ -84,10 +84,10 @@ VALUES('Thati', 23, 1), ('Cintia', 35, 3), ('Bill', 20, 2), ('Roger', 45, 1);
 -- Seguidores
 CREATE TABLE artista_seguidores (
   usuario_id INT NOT NULL,
-  artista_id INT NOT NULL,
-  PRIMARY KEY (usuario_id, artista_id),
+  artista_id INT NOT NULL,  
   CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuarios (id_usuario),
-  CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artistas (id_artista)
+  CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artistas (id_artista),
+  PRIMARY KEY (usuario_id, artista_id)
 )engine = InnoDB;
 
 INSERT INTO artista_seguidores(usuario_id, artista_id) 
@@ -119,6 +119,7 @@ VALUES
 (2, 13),
 (2, 17),
 (2, 15),
+(2,2),
 (3, 4),
 (3, 16),
 (3, 6),
