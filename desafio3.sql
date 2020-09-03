@@ -1,3 +1,4 @@
+DROP VIEW IF EXISTS estatisticas_musicais;
 CREATE VIEW estatisticas_musicais AS
 SELECT u.name AS usuario,
   s.name AS nome
