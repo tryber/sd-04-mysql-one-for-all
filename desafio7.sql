@@ -2,9 +2,9 @@
 SELECT a.name AS artista,
   b.name AS album,
   COUNT(f.user_id) AS seguidores
-FROM users_following AS f
-  JOIN artists AS a ON a.id = f.artist_id
-  JOIN albums AS b ON b.artist_id = a.id
+FROM Users_Following AS f
+  JOIN Artists AS a ON a.id = f.artist_id
+  JOIN Albums AS b ON b.artist_id = a.id
 GROUP BY album
 ORDER BY seguidores DESC,
   artista ASC,

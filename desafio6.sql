@@ -3,4 +3,4 @@ SELECT MIN(price),
   MAX(price),
   ROUND(AVG(price), 2),
   SUM(price)
-FROM plans;
+FROM Plans;
