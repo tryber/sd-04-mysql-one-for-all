@@ -9,5 +9,5 @@ BEGIN
     WHERE SpotifyClone.song_history.user_id = OLD.id;
   DELETE FROM SpotifyClone.followed_artist
     WHERE SpotifyClone.followed_artist.user_id = OLD.id;
-END;
+END
 $$ DELIMITER ;
