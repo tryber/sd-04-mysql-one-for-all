@@ -6,9 +6,15 @@ use SpotifyClone;
 
 create table planos(
 plano_id int primary key auto_increment,
-plano varchar(15),
+plano varchar(30),
 valor_plano decimal(5,2) not null
 )engine=InnoDB;
+
+insert into planos (plano_id ,plano, valor_plano)
+values
+(1, "gratuito", 0),
+(null, "familiar", 7.99),
+(null, "universitário", 5.99);
 
 create table usuarios(
 usuario_id int PRIMARY KEY auto_increment,
@@ -121,9 +127,3 @@ values
 (3,4),
 (3,1),
 (4,2);
-
-insert into planos (plano_id ,plano, valor_plano)
-values
-(1, "gratuito", 0),
-(null, "familiar", 7.99),
-(null, "universitário", 5.99);
