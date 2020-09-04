@@ -4,18 +4,26 @@ CREATE DATABASE SpotifyClone;
 
 use SpotifyClone;
 
+create table planos(
+plano_id int primary key auto_increment,
+plano varchar(15),
+valor_plano decimal(5,2) not null
+)engine=InnoDB;
+
 create table usuarios(
 usuario_id int PRIMARY KEY auto_increment,
 usuario varchar(30),
-idade int NOT NULL
+idade int NOT NULL,
+plano_id int not null,
+foreign key (plano_id) references planos(plano_id)
 )ENGINE=InnoDB;
 
-insert into usuarios (usuario_id, usuario, idade)
+insert into usuarios (usuario_id, usuario, idade, plano_id)
 VALUES
-(1, "Thati", 23),
-(null, "Cintia", 35),
-(null, "Bill", 20),
-(null, "Roger", 45);
+(1, "Thati", 23, 1),
+(null, "Cintia", 35, 2),
+(null, "Bill", 20, 3),
+(null, "Roger", 45, 1);
 
 create table artistas(
 artista_id int primary key auto_increment,
@@ -48,13 +56,6 @@ usuario_id int not null,
 artista_id int not null,
 foreign key (usuario_id) references usuarios(usuario_id),
 foreign key (artista_id) references artistas(artista_id)
-)engine=InnoDB;
-
-create table planos(
-usuario_id int not null,
-plano varchar(15),
-valor_plano decimal(5,2) not null,
-foreign key (usuario_id) references usuarios(usuario_id)
 )engine=InnoDB;
 
 insert into artistas (artista_id, artista)
@@ -121,9 +122,8 @@ values
 (3,1),
 (4,2);
 
-insert into planos (usuario_id, plano, valor_plano)
+insert into planos (plano_id ,plano, valor_plano)
 values
 (1, "gratuito", 0),
-(2, "familiar", 0),
-(3, "universitário", 0),
-(4, "gratuito", 0);
+(null, "familiar", 7.99),
+(null, "universitário", 5.99);
