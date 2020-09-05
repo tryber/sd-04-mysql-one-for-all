@@ -9,4 +9,5 @@ FROM
         INNER JOIN
     usuarios u ON (u.idusuario = h.idusuario)
         AND (u.idplano = 2 OR u.idplano = 3)
-GROUP BY c.cancao , h.idusuario;
+GROUP BY c.cancao , h.idusuario
+ORDER BY nome;
