@@ -106,10 +106,10 @@ insert into historico_reproducao(usuario_id,cancao_id)
 values(1,1),(1,6),(1,14),(1,16),(2,13),(2,17),(2,2),
 (2,15),(3,4),(3,16),(3,6),(4,3),(4,18),(4,11);
 
-
 SELECT * FROM SpotifyClone.album;
 SELECT * FROM SpotifyClone.artista;
 SELECT * FROM SpotifyClone.cancao;
-SELECT * FROM SpotifyClone.plano;
 SELECT * FROM SpotifyClone.historico_reproducao;
+SELECT * FROM SpotifyClone.plano;
+SELECT * FROM SpotifyClone.seguir_artista;
 SELECT * FROM SpotifyClone.usuario;
