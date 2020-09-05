@@ -13,4 +13,3 @@ FROM
         INNER JOIN
     albuns al ON al.idartista = a.idartista
 ORDER BY seguidores DESC , artista , album;
-  
