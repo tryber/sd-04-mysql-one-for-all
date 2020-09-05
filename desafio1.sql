@@ -98,15 +98,10 @@ CREATE TABLE SpotifyClone.cancao (
     (null, "Diamond Power",4),(null,"Honey, Let's Be Silly",4),(null,"Thang Of Thunder",5),(null, "Words Of Her Life",5),
     (null,"Without My Streets",5);
     
- insert into seguir_artista(usuario_id,artista_id)
+    insert into seguir_artista(usuario_id,artista_id)
     values(1,1),(1,4),(1,3),(2,1),(2,3),(3,2),(3,1),(4,4);
     
     insert into historico_reproducao(usuario_id,cancao_id)
     values(1,1),(1,6),(1,14),(1,16),(2,13),(2,17),(2,2),
     (2,15),(3,4),(3,16),(3,6),(4,3),(4,18),(4,11);
 	
-		
-	
-		
-		
-		
