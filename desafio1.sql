@@ -51,6 +51,7 @@ foreign key (album_id) references albuns(album_id)
 )engine=InnoDB;
 
 create table historicos(
+historico_id int primary key auto_increment,
 usuario_id int not null,
 musica_id int not null,
 foreign key (usuario_id) references usuarios(usuario_id),
@@ -58,6 +59,7 @@ foreign key (musica_id) references musicas(musica_id)
 )engine=InnoDB;
 
 create table seguindo_artistas(
+seguindo_id int primary key auto_increment,
 usuario_id int not null,
 artista_id int not null,
 foreign key (usuario_id) references usuarios(usuario_id),
@@ -100,30 +102,30 @@ values
 (null, "Words Of Her Life", 5),
 (null, "Without My Streets", 5);
 
-insert into historicos (usuario_id, musica_id)
+insert into historicos (historico_id, usuario_id, musica_id)
 values
-(1,1),
-(1,6),
-(1,14),
-(1,16),
-(2,13),
-(2,17),
-(2,2),
-(2,15),
-(3,4),
-(3,16),
-(3,6),
-(4,3),
-(4,18),
-(4,11);
+(1,1,1),
+(null,1,6),
+(null, 1,14),
+(null, 1,16),
+(null, 2,13),
+(null, 2,17),
+(null, 2,2),
+(null, 2,15),
+(null, 3,4),
+(null, 3,16),
+(null, 3,6),
+(null, 4,3),
+(null, 4,18),
+(null, 4,11);
 
-insert into seguindo_artistas (usuario_id, artista_id)
+insert into seguindo_artistas (seguindo_id, usuario_id, artista_id)
 values
-(1,1),
-(1,2),
-(1,3),
-(2,1),
-(2,3),
-(3,4),
-(3,1),
-(4,2);
+(1,1,1),
+(null,1,2),
+(null,1,3),
+(null,2,1),
+(null,2,3),
+(null,3,4),
+(null,3,1),
+(null,4,2);
