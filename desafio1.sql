@@ -5,7 +5,7 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
   /* 1-tabela plano*/
-CREATE TABLE SpotifyClone.plano(
+CREATE TABLE plano(
 plano_id INT NOT NULL AUTO_INCREMENT UNIQUE,
 plano VARCHAR(45) NOT NULL,
 valor_plano DECIMAL(5,2) NOT NULL,
@@ -15,55 +15,48 @@ INSERT INTO plano(plano_id,plano, valor_plano)
 VALUES (NULL, "gratuito",0),(NULL,"familiar",7.99),(NULL,"universitario",5.99);
 
 /* 2-tabela usuario*/
-CREATE TABLE SpotifyClone.usuario (
+CREATE TABLE usuario (
 usuario_id INT NOT NULL AUTO_INCREMENT,
 idade INT NOT NULL,
 nome VARCHAR(100) NOT NULL,
 plano_id INT NULL,
-CONSTRAINT pk_usuario_id primary key(usuario_id),
-CONSTRAINT fk_plano_id FOREIGN KEY (plano_id)
-REFERENCES SpotifyClone.plano (plano_id));
+primary key(usuario_id),
+FOREIGN KEY (plano_id)
+REFERENCES plano (plano_id));
 
 insert into usuario(usuario_id,idade,nome,plano_id)
 values (null,23,"Thati",1),(null,35,"Cintia",2),(null,20,"Bill",3),(null,45,"Roger",1);
 
 /* 3-tabela artista*/
-CREATE TABLE SpotifyClone.artista (
+CREATE TABLE artista (
 artista_id INT NOT NULL UNIQUE,
 nome VARCHAR(100) NOT NULL,
-PRIMARY KEY (`artista_id`));
+PRIMARY KEY (artista_id));
 
 insert into artista(artista_id,nome)
 values (1,"Walter Phoenix"),(2,"Peter Strong"),(3,"Lance Day"),(4,"Freedie Shannon");
 
-/* 4-tabela seguir artista*/
-CREATE TABLE `SpotifyClone`.`seguir_artista` (
-`usuario_id` INT NOT NULL,
-`artista_id` INT NOT NULL,
-PRIMARY KEY (`usuario_id`, `artista_id`),
-INDEX `fk_artista_id_idx` (`artista_id` ASC) VISIBLE,
-CONSTRAINT `fk_seguir_artista_1`
-FOREIGN KEY (`usuario_id`)
-REFERENCES `SpotifyClone`.`usuario` (`usuario_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION,
-CONSTRAINT `fk_artista_id`
-FOREIGN KEY (`artista_id`)
-REFERENCES `SpotifyClone`.`artista` (`artista_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION);
+/* 4-tabela seguir artista */
+CREATE TABLE seguir_artista (
+usuario_id INT NOT NULL,
+artista_id INT NOT NULL,
+PRIMARY KEY (usuario_id, artista_id),
+FOREIGN KEY (usuario_id)
+REFERENCES usuario (usuario_id),
+FOREIGN KEY (artista_id)
+REFERENCES artista (artista_id));
 
 insert into seguir_artista(usuario_id,artista_id)
 values(1,1),(1,4),(1,3),(2,1),(2,3),(3,2),(3,1),(4,4);
 
 /* 5-tabela album*/
-CREATE TABLE SpotifyClone.album (
+CREATE TABLE album (
 album_id INT NOT NULL AUTO_INCREMENT UNIQUE,
 albuns VARCHAR(50) NOT NULL,
 artista_id int null,
-CONSTRAINT pk_album_id PRIMARY KEY (album_id),
+PRIMARY KEY (album_id),
 FOREIGN KEY (artista_id)
-REFERENCES SpotifyClone.artista(artista_id)
+REFERENCES artista(artista_id)
 );
 
 insert into album(album_id,albuns,artista_id)
@@ -71,13 +64,13 @@ values(null,"Envious",1),(null,"Exuberant",1),(null,"Hallowed Steam",2),
 (null,"Incandescent",3),(null,"Temporary Culture",4);
 
 /* 6-tabela canção*/
-CREATE TABLE SpotifyClone.cancao (
+CREATE TABLE cancao (
 cancao_id INT NOT NULL AUTO_INCREMENT UNIQUE,
 cancoes VARCHAR(50) NULL,
 album_id int null,
 PRIMARY KEY (cancao_id),
 FOREIGN KEY (album_id)
-REFERENCES SpotifyClone.album(album_id)
+REFERENCES album(album_id)
 );
 
 insert into cancao(cancao_id,cancoes,album_id)
@@ -89,18 +82,15 @@ values(null,"Soul For Us",1),(null,"Reflections Of Magic",1),(null,"Dance With H
 (null,"Thang Of Thunder",5),(null, "Words Of Her Life",5),(null,"Without My Streets",5);
 
   /* 7-tabela historico de producao*/
-CREATE TABLE `SpotifyClone`.`historico_reproducao` (
-`usuario_id` INT NOT NULL,
-`cancao_id` INT NOT NULL,
-PRIMARY KEY (`usuario_id`, `cancao_id`),
-FOREIGN KEY (`usuario_id`)
-REFERENCES `SpotifyClone`.`usuario` (`usuario_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION,
-FOREIGN KEY (`cancao_id`)
-REFERENCES `SpotifyClone`.`cancao` (`cancao_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION);
+CREATE TABLE historico_reproducao (
+usuario_id INT NOT NULL,
+cancao_id INT NOT NULL,
+PRIMARY KEY (usuario_id, cancao_id),
+FOREIGN KEY (usuario_id)
+REFERENCES usuario (usuario_id),
+FOREIGN KEY (cancao_id)
+REFERENCES cancao (cancao_id)
+);
 
 insert into historico_reproducao(usuario_id,cancao_id)
 values(1,1),(1,6),(1,14),(1,16),(2,13),(2,17),(2,2),
