@@ -1,6 +1,6 @@
 create view estatisticas_musicais
 as select count(cancoes) as cancoes,
-count( distinct nome) as artista,
+count( distinct nome) as artistas,
 count( distinct albuns) as albuns
 from cancao
 inner join album
