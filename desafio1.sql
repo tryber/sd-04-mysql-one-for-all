@@ -43,45 +43,6 @@ CREATE TABLE `SpotifyClone`.`seguir_artista` (
     REFERENCES `SpotifyClone`.`artista` (`artista_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
---  1 chave primaria e 1 chave estrangeira
--- CREATE TABLE `SpotifyClone`.`seguir_artista` (
---   `usuario_id` INT NOT NULL UNIQUE,
---   `artista_id` INT NULL,
---   PRIMARY KEY (`usuario_id`),
---   INDEX `fk_artista_id_idx` (`artista_id` ASC) VISIBLE,
---   CONSTRAINT `fk_artista_id`
---     FOREIGN KEY (`artista_id`)
---     REFERENCES `SpotifyClone`.`artista` (`artista_id`)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION);
-
-
---  CREATE TABLE `SpotifyClone`.`seguir_artista` (
---   `usuario_id` INT NOT NULL,
---   `artista_id` INT NOT NULL,
---   PRIMARY KEY (`usuario_id`, `artista_id`));
-  
-  -- 1 chave primaria e 2 estrangeiras
--- CREATE TABLE `SpotifyClone`.`seguir_artista` (
--- 	`seguir_id` INT NOT NULL AUTO_INCREMENT, 
---   `usuario_id` INT NULL,
---   `artista_id` INT NULL,
---   INDEX `pk_seguir_id_idx` (`seguir_id` ASC) VISIBLE,
---   INDEX `fk_usuario_id_idx` (`usuario_id` ASC) VISIBLE,
---   INDEX `fk_artista_id_idx` (`artista_id` ASC) VISIBLE,
---   CONSTRAINT `pk_seguir_id`
--- 	PRIMARY KEY (`seguir_id`),
---   CONSTRAINT `fk_usuario_id`
---     FOREIGN KEY (`usuario_id`)
---     REFERENCES `SpotifyClone`.`usuario` (`usuario_id`)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---   CONSTRAINT `fk_artista_id`
---     FOREIGN KEY (`artista_id`)
---     REFERENCES `SpotifyClone`.`artista` (`artista_id`)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION);
-
 
 /* 5-tabela album*/
 CREATE TABLE SpotifyClone.album (
@@ -117,39 +78,6 @@ CREATE TABLE SpotifyClone.cancao (
     REFERENCES `SpotifyClone`.`cancao` (`cancao_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-  
-  --  1 chave primaria e 1 chave estrangeira
---   CREATE TABLE `SpotifyClone`.`historico_reproducao` (
---   `usuario_id` INT NOT NULL UNIQUE,
---   `cancao_id` INT NULL,
---   PRIMARY KEY (`usuario_id`),
---   INDEX `fk_cancao_id_idx` (`cancao_id` ASC) VISIBLE,
---   CONSTRAINT `fk_cancao_id`
---     FOREIGN KEY (`cancao_id`)
---     REFERENCES `SpotifyClone`.`cancao` (`cancao_id`)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION);
---     
-   
---  CREATE TABLE `SpotifyClone`.`historico_reproducao` (
---  `usuario_id` INT NOT NULL,
---  `cancao_id` INT NOT NULL,
---  PRIMARY KEY (`usuario_id`, `cancao_id`));
-
-    -- 1 chave primaria e 2 estrangeiras
- -- CREATE TABLE SpotifyClone.historico_reproducao (
---   usuario_id INT NULL,
---   cancao_id INT NULL,
---   INDEX fk_usuario_id_idx (usuario_id ASC) VISIBLE,
---   INDEX fk_cancao_id_idx (cancao_id ASC) VISIBLE,
---     FOREIGN KEY (usuario_id)
---     REFERENCES SpotifyClone.usuario (usuario_id)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (cancao_id)
---     REFERENCES SpotifyClone.cancao (cancao_id)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION);
     
     INSERT INTO plano(plano_id,plano, valor_plano)
     VALUES (NULL, "gratuito",0),(NULL,"familiar",7.99),(NULL,"universitario",5.99);
