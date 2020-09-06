@@ -11,7 +11,7 @@ CREATE TABLE planos(
 );
 
 CREATE TABLE artistas(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
 );
 
@@ -24,14 +24,14 @@ CREATE TABLE usuarios(
 );
 
 CREATE TABLE album(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     artista_id INT NOT NULL,
     CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artistas(id)
 );
 
 CREATE TABLE cancoes(
-	id INT PRIMARY KEY AUTO_INCREMENT,
+id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     album_id INT NOT NULL,
     artista_id INT NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE cancoes(
     CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artista(id)
 );
 
-	CREATE TABLE historico(
+CREATE TABLE historico(
     id INT NOT NULL,
     nome_id INT NOT NULL,
     PRIMARY KEY('id', 'nome_id'),
