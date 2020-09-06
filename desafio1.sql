@@ -6,7 +6,7 @@ USE SpotifyClone;
 
 CREATE TABLE `planos`(
     `id` INT PRIMARY KEY AUTO_INCREMENT,
-    `nome` VARCHAR(25) NOT NULL,
+    `plano` VARCHAR(25) NOT NULL,
     `valor` DECIMAL(6, 2)
 );
 
@@ -34,13 +34,12 @@ CREATE TABLE `cancoes`(
 `id` INT PRIMARY KEY AUTO_INCREMENT,
     `nome` VARCHAR(50) NOT NULL,
     `album_id` INT NOT NULL,
-    `artista_id` INT NOT NULL,
     CONSTRAINT FOREIGN KEY (`album_id`) REFERENCES `album`(`id`)
 );
     
     CREATE TABLE `seguindo`(
     `usuarios_id` INT NOT NULL,
-    `artista_id` INT NOT NULL,
+    `seguidor` INT NOT NULL,
     PRIMARY KEY (`usuarios_id`, `artista_id`),
     CONSTRAINT FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios`(`id`),
     CONSTRAINT FOREIGN KEY (`artista_id`) REFERENCES `artista`(`id`)
@@ -48,7 +47,7 @@ CREATE TABLE `cancoes`(
 
 CREATE TABLE `historico`(
     `usuario_id` INT NOT NULL,
-    `cancao_id` INT NOT NULL,
+    `tracks` INT NOT NULL,
     PRIMARY KEY(`id`, `nome_id`),
     CONSTRAINT FOREIGN KEY (`usuario_id`) REFERENCES `usuarios`(`id`),
     CONSTRAINT FOREIGN KEY (`cancao_id`) REFERENCES `cancoes`(`id`)
@@ -105,29 +104,29 @@ VALUES
   
   INSERT INTO `seguindo` (`usuarios_id`, `artista_id`)
   VALUES
-(1,1),
-(1,4),
-(1,3),
-(2,1),
-(2,3),
-(3,2),
-(3,1),
-(4,4);
+	(1,1),
+	(1,4),
+	(1,3),
+	(2,1),
+	(2,3),
+	(3,2),
+	(3,1),
+	(4,4);
   
   INSERT INTO
   `historico` (`usuario_id`, `nome_id`)
 VALUES
-(1,1),
-(1,6),
-(1,14),
-(1,16),
-(2,13),
-(2,17),
-(2,2),
-(2,15),
-(3,4),
-(3,16),
-(3,6),
-(4,3),
-(4,18),
-(4,11);
+  (1,1),
+  (1,6),
+  (1,14),
+  (1,16),
+  (2,13),
+  (2,17),
+  (2,2),
+  (2,15),
+  (3,4),
+  (3,16),
+  (3,6),
+  (4,3),
+  (4,18),
+  (4,11);
