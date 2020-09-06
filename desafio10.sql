@@ -7,8 +7,8 @@ DECLARE songs_played INT;
 
 SELECT COUNT(sh.song_id)
 INTO songs_played
-FROM song_history AS sh
-INNER JOIN users AS u
+FROM SpotifyClone.song_history AS sh
+INNER JOIN SpotifyClone.users AS u
 ON user_id_input = u.user_id AND u.user_id = sh.user_id;
 
 RETURN songs_played;
