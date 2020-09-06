@@ -14,7 +14,8 @@ CREATE TABLE subscriptions (
     price DOUBLE NOT NULL,
     PRIMARY KEY (subscription_id),
     UNIQUE INDEX subscription_id_UNIQUE (subscription_id ASC)
-)  ENGINE=INNODB , COMMENT='Subscriprions types';
+) ENGINE = INNODB,
+COMMENT = "Subscriprions types";
 
 -- Create Users table
 CREATE TABLE users (
@@ -24,9 +25,9 @@ CREATE TABLE users (
     subscription INT NOT NULL,
     PRIMARY KEY (user_id),
     UNIQUE INDEX user_id_UNIQUE (user_id ASC),
-    CONSTRAINT FK_UserSubscription FOREIGN KEY (subscription)
-        REFERENCES subscriptions (subscription_id)
-)  ENGINE=INNODB , COMMENT='Users data';
+    CONSTRAINT FK_UserSubscription FOREIGN KEY (subscription) REFERENCES subscriptions (subscription_id)
+) ENGINE = INNODB,
+COMMENT = "Users data";
 
 -- Create Artists table
 CREATE TABLE artists (
@@ -34,7 +35,8 @@ CREATE TABLE artists (
     name VARCHAR(100) NOT NULL,
     PRIMARY KEY (artist_id),
     UNIQUE INDEX artist_id_UNIQUE (artist_id ASC)
-)  ENGINE=INNODB , COMMENT='Artist info';
+) ENGINE = INNODB,
+COMMENT = "Artist info";
 
 -- Create Album table
 CREATE TABLE albuns (
@@ -43,9 +45,9 @@ CREATE TABLE albuns (
     artist INT NOT NULL,
     PRIMARY KEY (album_id),
     UNIQUE INDEX album_id_UNIQUE (album_id ASC),
-    CONSTRAINT FK_AlbumArtist FOREIGN KEY (artist)
-        REFERENCES artists (artist_id)
-)  ENGINE=INNODB , COMMENT='Albuns data';
+    CONSTRAINT FK_AlbumArtist FOREIGN KEY (artist) REFERENCES artists (artist_id)
+) ENGINE = INNODB,
+COMMENT = "Albuns data";
 
 -- Create Songs table
 CREATE TABLE songs (
@@ -55,11 +57,10 @@ CREATE TABLE songs (
     artist INT NOT NULL,
     PRIMARY KEY (song_id),
     UNIQUE INDEX song_id_UNIQUE (song_id ASC),
-    CONSTRAINT FK_AlbumSong FOREIGN KEY (album)
-        REFERENCES albuns (album_id),
-    CONSTRAINT FK_ArtistSong FOREIGN KEY (artist)
-        REFERENCES artists (artist_id)
-)  ENGINE=INNODB , COMMENT='Songs data';
+    CONSTRAINT FK_AlbumSong FOREIGN KEY (album) REFERENCES albuns (album_id),
+    CONSTRAINT FK_ArtistSong FOREIGN KEY (artist) REFERENCES artists (artist_id)
+) ENGINE = INNODB,
+COMMENT = "Songs data";
 
 -- Create followers table
 CREATE TABLE followers (
@@ -68,12 +69,11 @@ CREATE TABLE followers (
     artist INT NOT NULL,
     PRIMARY KEY (follow_id),
     UNIQUE INDEX follow_id_UNIQUE (follow_id ASC),
-    CONSTRAINT UC_UserArtist UNIQUE (user , artist),
-    CONSTRAINT FK_FollowersUsers FOREIGN KEY (user)
-        REFERENCES users (user_id),
-    CONSTRAINT FK_FollowersArtists FOREIGN KEY (artist)
-        REFERENCES artists (artist_id)
-)  ENGINE=INNODB , COMMENT='Artists fallowers data';
+    CONSTRAINT UC_UserArtist UNIQUE (user, artist),
+    CONSTRAINT FK_FollowersUsers FOREIGN KEY (user) REFERENCES users (user_id),
+    CONSTRAINT FK_FollowersArtists FOREIGN KEY (artist) REFERENCES artists (artist_id)
+) ENGINE = INNODB,
+COMMENT = "Artists fallowers data";
 
 -- Create history table
 CREATE TABLE songs_history (
@@ -83,37 +83,56 @@ CREATE TABLE songs_history (
     data TIMESTAMP,
     PRIMARY KEY (hisotry_id),
     UNIQUE INDEX hisotry_id_UNIQUE (hisotry_id ASC),
-    CONSTRAINT UC_UserSong UNIQUE (user , song),
-    CONSTRAINT FK_SongsHistoryUsers FOREIGN KEY (user)
-        REFERENCES users (user_id),
-    CONSTRAINT FK_SongsHistorySong FOREIGN KEY (song)
-        REFERENCES songs (song_id)
-)  ENGINE=INNODB , COMMENT='Users played songs history';
+    CONSTRAINT UC_UserSong UNIQUE (user, song),
+    CONSTRAINT FK_SongsHistoryUsers FOREIGN KEY (user) REFERENCES users (user_id),
+    CONSTRAINT FK_SongsHistorySong FOREIGN KEY (song) REFERENCES songs (song_id)
+) ENGINE = INNODB,
+COMMENT = "Users played songs history";
 
 -- Insert data into subscriptions table
 INSERT INTO subscriptions (subscription, price)
-VALUES	('gratuito', '0.00'), 
-		('universitário', '7.99'), 
-		('familiar', '5.99');
+VALUES ("gratuito", "0.00"),
+    ("universitário", "7.99"),
+    ("familiar", "5.99");
 
 -- Insert data into users table
 INSERT INTO users (username, age, subscription)
-VALUES	('Thati', 23, 1),
-		('cintia', 35, 3),
-        ('Bill', 20, 2),
-        ('Roger', 45, 1);
+VALUES ("Thati", 23, 1),
+    ("cintia", 35, 3),
+    ("Bill", 20, 2),
+    ("Roger", 45, 1);
 
 -- Insert artirts data into artists table
-INSERT INTO	artists	(name)
-VALUES	('Walter Phoenix'),
-		('Peter Strong'),
-		('Lance Day'), 
-        ('Freedie Shannon');
+INSERT INTO artists (name)
+VALUES ("Walter Phoenix"),
+    ("Peter Strong"),
+    ("Lance Day"),
+    ("Freedie Shannon");
 
 -- Inser data into albums table
-INSERT INTO albuns (name, artist)
-VALUE	('Envious', 1),
-		('Exuberant', 1),
-		('Hallowed Steam', 2),
-		('Incandescent', 3),
-		('Temporary Culture', 4);
+INSERT INTO albuns (name, artist) VALUE ("Envious", 1),
+    ("Exuberant", 1),
+    ("Hallowed Steam", 2),
+    ("Incandescent", 3),
+    ("Temporary Culture", 4);
+
+-- Insert data into songs table
+INSERT INTO songs (name, album, artist)
+VALUES ("Soul For Us", 1, 1),
+    ("Reflections Of Magic", 1, 1),
+    ("Dance With Her Own", 1, 1),
+    ("Troubles Of My Inner Fire", 2, 1),
+    ("Time Fireworks", 2, 1),
+    ("Magic Circus", 3, 2),
+    ("Honey, So Do I", 3, 2),
+    ("Sweetie, Let's Go Wild", 3, 2),
+    ("She Knows", 3, 2),
+    ("Fantasy For Me", 4, 3),
+    ("Celebration Of More", 4, 3),
+    ("Rock His Everything", 4, 3),
+    ("Home Forever", 4, 3),
+    ("Diamond Power", 4, 3),
+    ("Honey, Let's Be Silly", 4, 3),
+    ("Thang Of Thunder", 5, 4),
+    ("Words Of Her Life", 5, 4),
+    ("Without My Streets", 5, 4);
