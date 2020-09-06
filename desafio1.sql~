@@ -40,17 +40,14 @@ CREATE TABLE cancoes(
 );
     
     CREATE TABLE seguindo(
-    id INT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     artista_id INT NOT NULL,
-    PRIMARY KEY ('id', 'artista_id'),
-    CONSTRAINT FOREIGN KEY (id) REFERENCES usuarios(id)
     CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artista(id)
 );
 
 	CREATE TABLE historico(
-    id INT NOT NULL,
+    id INT PRIMARY KEY NOT NULL,
     nome_id INT NOT NULL,
-    PRIMARY KEY('id', 'nome_id'),
     CONSTRAINT FOREIGN KEY (id) REFERENCES usuarios(id),
     CONSTRAINT FOREIGN KEY (nome_id) REFERENCES cancoes(id)
 );
