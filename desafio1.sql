@@ -94,7 +94,7 @@ VALUES
 ('Time Fireworks', 2),
 ('Magic Circus', 3),
 ('Honey, So Do I', 3),
-('Sweetie, Let’s Go Wild', 3),
+('Sweetie, Let's Go Wild', 3),
 ('She Knows', 3),
 ('Fantasy For Me', 4),
 ('Celebration Of More', 4),
