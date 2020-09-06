@@ -6,13 +6,13 @@ USE SpotifyClone;
 
 CREATE TABLE `plan`(
 `plan_id` INT PRIMARY KEY AUTO_INCREMENT,
-`plan_name` VARCHAR(25) NOT NULL,
+`plan_name` VARCHAR(100) NOT NULL,
 `plan_price` DECIMAL(6, 2) NOT NULL
 );
 
 CREATE TABLE `user`(
 `user_id` INT PRIMARY KEY AUTO_INCREMENT,
-`user_name` VARCHAR(50) NOT NULL,
+`user_name` VARCHAR(100) NOT NULL,
 `user_age` INT NOT NULL,
 `plan_id` INT NOT NULL,
 CONSTRAINT FOREIGN KEY(`plan_id`) REFERENCES `plan`(`plan_id`)
@@ -20,19 +20,19 @@ CONSTRAINT FOREIGN KEY(`plan_id`) REFERENCES `plan`(`plan_id`)
 
 CREATE TABLE `artist`(
 `artist_id` INT PRIMARY KEY AUTO_INCREMENT,
-`artist_name` VARCHAR(50) NOT NULL
+`artist_name` VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE `album`(
 `album_id` INT PRIMARY KEY AUTO_INCREMENT,
-`album_name` VARCHAR(50) NOT NULL,
+`album_name` VARCHAR(100) NOT NULL,
 `artist_id` INT NOT NULL,
 CONSTRAINT FOREIGN KEY(`artist_id`) REFERENCES `artist`(`artist_id`)
 );
 
 CREATE TABLE `track`(
 `track_id` INT PRIMARY KEY AUTO_INCREMENT,
-`track_name` VARCHAR(50) NOT NULL,
+`track_name` VARCHAR(100) NOT NULL,
 `album_id` INT NOT NULL,
 CONSTRAINT FOREIGN KEY(`album_id`) REFERENCES `album`(`album_id`)
 );
