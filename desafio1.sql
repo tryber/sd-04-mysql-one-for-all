@@ -67,9 +67,8 @@ CREATE TABLE followers (
     follow_id INT NOT NULL AUTO_INCREMENT,
     user INT NOT NULL,
     artist INT NOT NULL,
-    PRIMARY KEY (follow_id),
+    PRIMARY KEY (follow_id, user, artist),
     UNIQUE INDEX follow_id_UNIQUE (follow_id ASC),
-    CONSTRAINT UC_UserArtist UNIQUE (user, artist),
     CONSTRAINT FK_FollowersUsers FOREIGN KEY (user) REFERENCES users (user_id),
     CONSTRAINT FK_FollowersArtists FOREIGN KEY (artist) REFERENCES artists (artist_id)
 ) ENGINE = INNODB,
@@ -81,9 +80,8 @@ CREATE TABLE songs_history (
     user INT NOT NULL,
     song INT NOT NULL,
     play_date TIMESTAMP,
-    PRIMARY KEY (history_id),
+    PRIMARY KEY (history_id, user, song),
     UNIQUE INDEX history_id_UNIQUE (history_id ASC),
-    CONSTRAINT UC_UserSong UNIQUE (user, song),
     CONSTRAINT FK_SongsHistoryUsers FOREIGN KEY (user) REFERENCES users (user_id),
     CONSTRAINT FK_SongsHistorySong FOREIGN KEY (song) REFERENCES songs (song_id)
 ) ENGINE = INNODB,
