@@ -77,12 +77,12 @@ COMMENT = "Artists fallowers data";
 
 -- Create history table
 CREATE TABLE songs_history (
-    hisotry_id INT NOT NULL AUTO_INCREMENT,
+    history_id INT NOT NULL AUTO_INCREMENT,
     user INT NOT NULL,
     song INT NOT NULL,
     data TIMESTAMP,
-    PRIMARY KEY (hisotry_id),
-    UNIQUE INDEX hisotry_id_UNIQUE (hisotry_id ASC),
+    PRIMARY KEY (history_id),
+    UNIQUE INDEX history_id_UNIQUE (history_id ASC),
     CONSTRAINT UC_UserSong UNIQUE (user, song),
     CONSTRAINT FK_SongsHistoryUsers FOREIGN KEY (user) REFERENCES users (user_id),
     CONSTRAINT FK_SongsHistorySong FOREIGN KEY (song) REFERENCES songs (song_id)
