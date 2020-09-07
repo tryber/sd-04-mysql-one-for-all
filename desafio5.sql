@@ -7,4 +7,5 @@ CREATE VIEW top_2_hits_do_momento AS (
     GROUP BY sh.song
     ORDER BY reproducoes DESC,
         s.name ASC
+    LIMIT 2
 );
