@@ -1,3 +1,4 @@
+DELIMITER $$
 CREATE PROCEDURE albuns_do_artista (nome VARCHAR(50))
 SELECT (
 SELECT artist_name FROM SpotifyClone.artist
@@ -6,3 +7,5 @@ album_name as 'album'
 FROM SpotifyClone.album
 HAVING artista = nome
 ORDER BY 2;
+END $$
+DELIMITER
