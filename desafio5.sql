@@ -1,6 +1,3 @@
--- Drop view if neccesary
-DROP VIEW IF EXISTS top_2_hits_do_momento;
-
 -- Create historico_reproducao_usuarios view
 CREATE VIEW top_2_hits_do_momento AS (
     SELECT s.name AS cancao,

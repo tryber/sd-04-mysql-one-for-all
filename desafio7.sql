@@ -1,6 +1,3 @@
--- Drop view if neccesary
-DROP VIEW IF EXISTS perfil_artistas;
-
 -- Create perfil_artistas view
 CREATE VIEW perfil_artistas AS (
     SELECT a.name AS artista,

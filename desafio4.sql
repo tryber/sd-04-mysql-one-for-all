@@ -1,6 +1,3 @@
--- Drop view if neccesary
-DROP VIEW IF EXISTS top_3_artistas;
-
 -- Create historico_reproducao_usuarios view
 CREATE VIEW top_3_artistas AS (
     SELECT a.name AS artista,

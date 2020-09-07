@@ -1,6 +1,3 @@
--- Drop view if neccesary
-DROP VIEW IF EXISTS faturamento_atual;
-
 -- Create historico_reproducao_usuarios view
 CREATE VIEW faturamento_atual AS (
     SELECT MIN(s.price) as faturamento_minimo,

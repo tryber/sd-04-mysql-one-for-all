@@ -1,6 +1,3 @@
--- Drop view if neccesary
-DROP VIEW IF EXISTS historico_reproducao_usuarios;
-
 -- Create historico_reproducao_usuarios view
 CREATE VIEW historico_reproducao_usuarios AS (
     SELECT u.username AS usuario,

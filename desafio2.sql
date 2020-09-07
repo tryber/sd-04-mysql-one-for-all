@@ -1,6 +1,3 @@
--- Drop view if neccesary
-DROP VIEW IF EXISTS estatisticas_musicais;
-
 -- Create estatisticas_musicais view
 CREATE VIEW estatisticas_musicais AS (
     SELECT (
