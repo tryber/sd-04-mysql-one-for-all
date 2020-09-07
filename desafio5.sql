@@ -5,7 +5,7 @@ from cancao
 inner join historico_reproducao
 on historico_reproducao.cancao_id = cancao.cancao_id
 group by cancao.cancoes
-order by reproducoes desc limit 2;
+order by reproducoes desc, cancao.cancoes limit 2;
 
 /*Estamos fazendo um estudo das músicas mais tocadas e precisamos saber quais são as duas 
 músicas mais tocadas no momento. Crie uma VIEW chamada top_2_hits_do_momento que possua duas colunas:
