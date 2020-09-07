@@ -80,7 +80,7 @@ CREATE TABLE songs_history (
     history_id INT NOT NULL AUTO_INCREMENT,
     user INT NOT NULL,
     song INT NOT NULL,
-    data TIMESTAMP,
+    play_date TIMESTAMP,
     PRIMARY KEY (history_id),
     UNIQUE INDEX history_id_UNIQUE (history_id ASC),
     CONSTRAINT UC_UserSong UNIQUE (user, song),
@@ -136,3 +136,31 @@ VALUES ("Soul For Us", 1, 1),
     ("Thang Of Thunder", 5, 4),
     ("Words Of Her Life", 5, 4),
     ("Without My Streets", 5, 4);
+
+-- Add data into played songs history
+INSERT INTO songs_history (user, song)
+VALUES  (1, 1),
+    (1, 6),
+    (1, 14),
+    (1, 16),
+    (2, 13),
+    (2, 17),
+    (2, 2),
+    (2, 15),
+    (3, 4),
+    (3, 16),
+    (3, 6),
+    (4, 3),
+    (4, 18),
+    (4, 11);
+
+-- Insert data into followers table
+INSERT INTO followers (user, artist)
+VALUES  (1, 1),
+    (1, 4),
+    (1, 3),
+    (2, 1),
+    (2, 3),
+    (3, 2),
+    (3, 1),
+    (4, 4);
