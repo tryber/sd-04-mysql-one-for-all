@@ -1,4 +1,4 @@
-CREATE PROCEDURE albuns_artist (nome VARCHAR(50))
+CREATE PROCEDURE albuns_do_artista (nome VARCHAR(50))
 SELECT (
 SELECT artist_name FROM SpotifyClone.artist
 WHERE artist_id = SpotifyClone.album.artist_id) AS 'artista',
