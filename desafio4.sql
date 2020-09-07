@@ -1,11 +1,12 @@
-create view top_3_artistas
-as select artista.nome as artista,
+-- create view top_3_artistas
+-- as
+ select artista.nome as artista,
 count(seguir_artista.artista_id) as seguidores 
 from artista
 inner join seguir_artista
 on artista.artista_id = seguir_artista.artista_id
 group by seguir_artista.artista_id
-order by seguidores desc limit 3;
+order by seguidores desc, artista limit 3;
 
 /*Crie uma VIEW com o nome top_3_artistas que deve mostrar somente as três pessoas artistas mais populares 
 no banco SpotifyClone, possuindo as seguintes colunas:
