@@ -88,9 +88,9 @@ CREATE TABLE IF NOT EXISTS favorite_artists (
   `artist` INT NOT NULL,
   PRIMARY KEY (`user`, artist),
   FOREIGN KEY (`user`)
-	REFERENCES users (`id_user`),
+    REFERENCES users (`id_user`),
   FOREIGN KEY (`artist`)
-	REFERENCES artists (`id_artists`)
+    REFERENCES artists (`id_artists`)
 )
 ENGINE = InnoDB;
 
@@ -105,7 +105,7 @@ CREATE TABLE playback_history (
   `song` INT NOT NULL,
   PRIMARY KEY (`user`, `song`),
   FOREIGN KEY (`user`)
-	REFERENCES users (`id_user`),
+    REFERENCES users (`id_user`),
   FOREIGN KEY (`song`)
     REFERENCES songs (`id_songs`)
 )
@@ -119,7 +119,7 @@ USE `SpotifyClone`;
 
 INSERT INTO plans (`id_plan`, `type`, `price`)
 VALUES
-	(1, 'gratuito', `0.00`),
+    (1, 'gratuito', `0.00`),
     (2, 'familiar', `7.99`),
     (3, 'universitário', `5.99`);
 
@@ -129,7 +129,7 @@ VALUES
 
 INSERT INTO users (`id_user`, `name`, `age`, `plan`)
 VALUES
-	(1, 'Thati', 23, 1),
+    (1, 'Thati', 23, 1),
     (2, 'Cintia', 35, 2),
     (3, 'Bill', 20, 3),
     (4, 'Roger', 45, 1);
@@ -140,7 +140,7 @@ VALUES
 
 INSERT INTO artists (`id_artists`, `name`)
 VALUES
-	(1, 'Freedie Shannon'),
+    (1, 'Freedie Shannon'),
     (2, 'Walter Phoenix'),
     (3, 'Peter Strong'),
     (4, 'Lance Day');
@@ -151,7 +151,7 @@ VALUES
 
 INSERT INTO album (`id_album`, `title`, `artist`)
 VALUES
-	(1, 'Envious', 2),
+    (1, 'Envious', 2),
     (2, 'Exuberant', 2),
 	(3, 'Hallowed Steam', 3),
     (4, 'Incandescent', 4),
@@ -163,7 +163,7 @@ VALUES
 
 INSERT INTO songs (`id_songs`, `title`, `album`)
 VALUES
-	(1, 'Soul For Us', 1),
+    (1, 'Soul For Us', 1),
     (2, 'Reflections Of Magic', 1),
     (3, 'Dance With Her Own', 1),
     (4, 'Time Fireworks', 2),
@@ -188,7 +188,7 @@ VALUES
 
 INSERT INTO favorite_artists (`user`, `artist`)
 VALUES
-	(1, 1),
+    (1, 1),
     (1, 2),
     (1, 4),
     (2, 2),
@@ -203,7 +203,7 @@ VALUES
 
 INSERT INTO `playback_history` (`user`, `song`)
 VALUES
-	(1, 1),
+    (1, 1),
     (1, 6),
     (1, 14),
     (1, 16),
