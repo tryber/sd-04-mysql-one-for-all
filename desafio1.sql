@@ -45,7 +45,7 @@ FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 ) ENGINE=INNODB;
 
-CREATE TABLE artistas_seguindo(
+CREATE TABLE artistas_seguidos(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
 PRIMARY KEY (usuario_id, artista_id),
@@ -119,7 +119,7 @@ VALUES
 (4, 18),
 (4, 11);
 
-INSERT INTO artistas_seguido(usuario_id, artista_id)
+INSERT INTO artistas_seguidos(usuario_id, artista_id)
 VALUES
 (1, 1),
 (1, 4),
