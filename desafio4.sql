@@ -3,5 +3,5 @@ CREATE VIEW top_3_artistas AS
   FROM artists AS a, favorite_artists AS fa
   WHERE a.id = fa.artist
   GROUP BY a.id
-  ORDER BY COUNT(fa.user) DESC
+  ORDER BY seguidores DESC, a.name
   LIMIT 3;
