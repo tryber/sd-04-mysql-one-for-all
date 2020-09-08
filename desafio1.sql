@@ -56,8 +56,8 @@ FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 INSERT INTO planos(plano, valor)
 VALUES
 ('gratuito', 0),
-('familiar', 7,99),
-('universitário', 5,99);
+('familiar', 7.99),
+('universitário', 5.99);
 
 INSERT INTO usuarios(nome, idade, plano_id)
 VALUES
