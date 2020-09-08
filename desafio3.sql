@@ -15,4 +15,4 @@ FROM
 WHERE
     usuarios.usuario_id = H.usuario_id
 ORDER BY
-    usuario;
+    usuario, nome;
