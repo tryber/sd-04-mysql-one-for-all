@@ -8,4 +8,3 @@ CREATE VIEW historico_reproducao_usuarios AS
     ORDER BY usuario, nome
 );
 
-  
