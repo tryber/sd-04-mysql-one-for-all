@@ -7,90 +7,79 @@ USE `SpotifyClone`;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`plans`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS plans ;
 
 CREATE TABLE plans (
-  `id_plan` INT NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(50) NULL,
-  `price` DECIMAL(2) ZEROFILL NOT NULL,
-  PRIMARY KEY (`id_plan`))
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(50) NOT NULL,
+  `price` DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS users ;
 
 CREATE TABLE users (
-  `id_user` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
-  `age` INT ZEROFILL NULL,
+  `age` INT NOT NULL,
   `plan` INT NOT NULL,
-  PRIMARY KEY (`id_user`),
+  PRIMARY KEY (`id`),
   FOREIGN KEY (`plan`)
-    REFERENCES plans (`id_plan`)
+    REFERENCES plans (`id`)
 )
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`artists`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS artists ;
 
-CREATE TABLE IF NOT EXISTS artists (
-  `id_artists` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE artists (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`id_artists`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`album`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS album ;
 
 CREATE TABLE album (
-  `id_album` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(100) NOT NULL,
   `artist` INT NOT NULL,
-  PRIMARY KEY (`id_album`),
+  PRIMARY KEY (`id`),
   FOREIGN KEY (`artist`)
-    REFERENCES artists (`id_artists`)
+    REFERENCES artists (`id`)
 )
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`songs`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS songs ;
 
 CREATE TABLE songs (
-  `id_songs` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NULL,
   `album` INT NOT NULL,
-  PRIMARY KEY (`id_songs`),
+  PRIMARY KEY (`id`),
   FOREIGN KEY (`album`)
-    REFERENCES album (`id_album`)
+    REFERENCES album (`id`)
 )
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`favorite_artists`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS favorite_artists ;
 
-CREATE TABLE IF NOT EXISTS favorite_artists (
+CREATE TABLE favorite_artists (
   `user` INT NOT NULL,
   `artist` INT NOT NULL,
   PRIMARY KEY (`user`, artist),
   FOREIGN KEY (`user`)
-    REFERENCES users (`id_user`),
+    REFERENCES users (`id`),
   FOREIGN KEY (`artist`)
-    REFERENCES artists (`id_artists`)
+    REFERENCES artists (`id`)
 )
 ENGINE = InnoDB;
 
@@ -98,16 +87,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`playback_history`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS playback_history ;
 
 CREATE TABLE playback_history (
   `user` INT NOT NULL,
   `song` INT NOT NULL,
   PRIMARY KEY (`user`, `song`),
   FOREIGN KEY (`user`)
-    REFERENCES users (`id_user`),
+    REFERENCES users (`id`),
   FOREIGN KEY (`song`)
-    REFERENCES songs (`id_songs`)
+    REFERENCES songs (`id`)
 )
 ENGINE = InnoDB;
 
@@ -117,70 +105,70 @@ USE `SpotifyClone`;
 -- Dumping data for table 'plans'
 -- -----------------------------------------------------
 
-INSERT INTO plans (`id_plan`, `type`, `price`)
+INSERT INTO plans (`type`, `price`)
 VALUES
-    (1, 'gratuito', `0.00`),
-    (2, 'familiar', `7.99`),
-    (3, 'universitário', `5.99`);
+    ('gratuito', 0.00),
+    ('familiar', 7.99),
+    ('universitário', 5.99);
 
 -- -----------------------------------------------------
 -- Dumping data for table 'users'
 -- -----------------------------------------------------
 
-INSERT INTO users (`id_user`, `name`, `age`, `plan`)
+INSERT INTO users (`name`, `age`, `plan`)
 VALUES
-    (1, 'Thati', 23, 1),
-    (2, 'Cintia', 35, 2),
-    (3, 'Bill', 20, 3),
-    (4, 'Roger', 45, 1);
+    ('Thati', 23, 1),
+    ('Cintia', 35, 2),
+    ('Bill', 20, 3),
+    ('Roger', 45, 1);
 
 -- -----------------------------------------------------
 -- Dumping data for table 'artists'
 -- -----------------------------------------------------
 
-INSERT INTO artists (`id_artists`, `name`)
+INSERT INTO artists (`name`)
 VALUES
-    (1, 'Freedie Shannon'),
-    (2, 'Walter Phoenix'),
-    (3, 'Peter Strong'),
-    (4, 'Lance Day');
+    ('Freedie Shannon'),
+    ('Walter Phoenix'),
+    ('Peter Strong'),
+    ('Lance Day');
 
 -- -----------------------------------------------------
 -- Dumping data for table 'album'
 -- -----------------------------------------------------
 
-INSERT INTO album (`id_album`, `title`, `artist`)
+INSERT INTO album (`title`, `artist`)
 VALUES
-    (1, 'Envious', 2),
-    (2, 'Exuberant', 2),
-    (3, 'Hallowed Steam', 3),
-    (4, 'Incandescent', 4),
-    (5, 'Temporary Culture', 1);
+    ('Envious', 2),
+    ('Exuberant', 2),
+    ('Hallowed Steam', 3),
+    ('Incandescent', 4),
+    ('Temporary Culture', 1);
 
 -- -----------------------------------------------------
 -- Dumping data for table 'songs'
 -- -----------------------------------------------------
 
-INSERT INTO songs (`id_songs`, `title`, `album`)
+INSERT INTO songs (`title`, `album`)
 VALUES
-    (1, 'Soul For Us', 1),
-    (2, 'Reflections Of Magic', 1),
-    (3, 'Dance With Her Own', 1),
-    (4, 'Time Fireworks', 2),
-    (5, 'Troubles Of My Inner Fire', 2),
-    (6, 'Magic Circus', 3),
-    (7, 'Honey, So Do I', 3),
-    (8, `Sweetie, Let's Go Wild`, 3),
-    (9, 'She Knows', 3),
-    (10, 'Fantasy For Me', 4),
-    (11, 'Celebration Of More', 4),
-    (12, 'Rock His Everything', 4),
-    (13, 'Home Forever', 4),
-    (14, 'Diamond Power', 4),
-    (15, `Honey, Let's Be Silly`, 4),
-    (16, 'Thang Of Thunder', 5),
-    (17, 'Words Of Her Life', 5),
-    (18, 'Without My Streets', 5);
+    ('Soul For Us', 1),
+    ('Reflections Of Magic', 1),
+    ('Dance With Her Own', 1),
+    ('Time Fireworks', 2),
+    ('Troubles Of My Inner Fire', 2),
+    ('Magic Circus', 3),
+    ('Honey, So Do I', 3),
+    ("Sweetie, Let's Go Wild", 3),
+    ('She Knows', 3),
+    ('Fantasy For Me', 4),
+    ('Celebration Of More', 4),
+    ('Rock His Everything', 4),
+    ('Home Forever', 4),
+    ('Diamond Power', 4),
+    ("Honey, Let's Be Silly", 4),
+    ('Thang Of Thunder', 5),
+    ('Words Of Her Life', 5),
+    ('Without My Streets', 5);
 
 -- -----------------------------------------------------
 -- Dumping data for table 'favorite_artists'
