@@ -73,7 +73,7 @@ ENGINE = InnoDB;
 INSERT INTO
     planos (planos_id, plano,  valor_plano)
 VALUES
-    (1, 'gratuito' , 0),
+    (1, 'gratuito' , 0.00),
     (2, 'universitário' ,5.99),
     (3, 'familiar' ,7.99);
 
