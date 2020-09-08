@@ -1,118 +1,79 @@
-DROP SCHEMA IF EXISTS `SpotfyClone` ;
+DROP DATABASE IF EXISTS SpotifyClone;
 
-CREATE SCHEMA IF NOT EXISTS `SpotfyClone` ;
-USE `SpotfyClone` ;
+CREATE DATABASE SpotifyClone;
 
-CREATE TABLE IF NOT EXISTS `SpotfyClone`.`planos` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome_plano` VARCHAR(55) NOT NULL,
-  `valor_plano` DECIMAL(10,2) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+USE SpotifyClone;
 
-CREATE TABLE IF NOT EXISTS `SpotfyClone`.`usuarios` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(55) NOT NULL,
-  `idade` INT NOT NULL,
-  `id_plano` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_usuarios_planos_idx` (`id_plano` ASC) VISIBLE,
-  CONSTRAINT `fk_usuarios_planos`
-    FOREIGN KEY (`id_plano`)
-    REFERENCES `SpotfyClone`.`planos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE artistas(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(100) NOT NULL
+) engine = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotfyClone`.`artistas` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome_artista` VARCHAR(55) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+CREATE TABLE planos(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  valor DECIMAL(10, 2) NOT NULL DEFAULT 0
+) engine = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotfyClone`.`albuns` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome_album` VARCHAR(45) NOT NULL,
-  `id_artista` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_albuns_artistas1_idx` (`id_artista` ASC) VISIBLE,
-  CONSTRAINT `fk_albuns_artistas1`
-    FOREIGN KEY (`id_artista`)
-    REFERENCES `SpotfyClone`.`artistas` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE usuarios(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(100) NOT NULL,
+  idade INT NOT NULL,
+  id_plano INT NOT NULL,
+  FOREIGN KEY (id_plano) REFERENCES planos (id)
+) engine = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotfyClone`.`cancoes` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nome_musica` VARCHAR(55) NOT NULL,
-  `id_album` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_cancoes_albuns1_idx` (`id_album` ASC) VISIBLE,
-  CONSTRAINT `fk_cancoes_albuns1`
-    FOREIGN KEY (`id_album`)
-    REFERENCES `SpotfyClone`.`albuns` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE albums(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  id_artista INT NOT NULL,
+  FOREIGN KEY (id_artista) REFERENCES artistas (id)
+) engine = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotfyClone`.`seguindo_artistas` (
-  `id_artista` INT NOT NULL,
-  `id_usuario` INT NOT NULL,
-  PRIMARY KEY (`id_artista`, `id_usuario`),
-  INDEX `fk_artistas_has_usuarios_usuarios1_idx` (`id_usuario` ASC) VISIBLE,
-  INDEX `fk_artistas_has_usuarios_artistas1_idx` (`id_artista` ASC) VISIBLE,
-  CONSTRAINT `fk_artistas_has_usuarios_artistas1`
-    FOREIGN KEY (`id_artista`)
-    REFERENCES `SpotfyClone`.`artistas` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_artistas_has_usuarios_usuarios1`
-    FOREIGN KEY (`id_usuario`)
-    REFERENCES `SpotfyClone`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE cancoes(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  id_album INT NOT NULL,
+  FOREIGN KEY (id_album) REFERENCES albums (id)
+) engine = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `SpotfyClone`.`historico_reproducao` (
-  `id_cancao` INT NOT NULL,
-  `id_usuario` INT NOT NULL,
-  PRIMARY KEY (`id_cancao`, `id_usuario`),
-  INDEX `fk_cancoes_has_usuarios_usuarios1_idx` (`id_usuario` ASC) VISIBLE,
-  INDEX `fk_cancoes_has_usuarios_cancoes1_idx` (`id_cancao` ASC) VISIBLE,
-  CONSTRAINT `fk_cancoes_has_usuarios_cancoes1`
-    FOREIGN KEY (`id_cancao`)
-    REFERENCES `SpotfyClone`.`cancoes` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cancoes_has_usuarios_usuarios1`
-    FOREIGN KEY (`id_usuario`)
-    REFERENCES `SpotfyClone`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE seguindo_artistas(
+  usuario_id INT NOT NULL,
+  artista_id INT NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
+  FOREIGN KEY (artista_id) REFERENCES artistas (id),
+  PRIMARY KEY (usuario_id, artista_id)
+)engine = InnoDB;
 
-INSERT INTO artistas (nome_artista)
+CREATE TABLE historico_reproducoes(
+  usuario_id INT NOT NULL,
+  cancao_id INT NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
+  FOREIGN KEY (cancao_id) REFERENCES cancoes (id),
+  PRIMARY KEY (usuario_id, cancao_id)
+)engine = InnoDB;
+
+INSERT INTO artistas (nome)
   VALUES
       ('Walter Phoenix'),
       ('Peter Strong'),
       ('Lance Day'),
       ('Freedie Shannon');
 
-INSERT INTO planos(nome_plano, valor_plano)
+INSERT INTO planos(nome, valor)
   VALUES
       ('gratuito', 0),
       ('familiar', 7.99),
       ('universitário', 5.99);
 
-INSERT INTO usuarios(nome, idade, id_plano)
+INSERT INTO usuarios(  nome, idade, id_plano)
   VALUES
       ('Thati', 23, 1),
       ('Cintia', 35, 2),
       ('Bill', 20, 3),
       ('Roger', 45, 1);
 
-INSERT INTO albuns(nome_album, id_artista)
+INSERT INTO albums(nome, id_artista)
   VALUES
       ('Envious', 1),
       ('Exuberant', 1),
@@ -120,7 +81,7 @@ INSERT INTO albuns(nome_album, id_artista)
       ('Incandescent', 3),
       ('Temporary Culture', 4);
 
-INSERT INTO cancoes(nome_musica, id_album)
+INSERT INTO cancoes(nome, id_album)
   VALUES
       ('Soul For Us', 1),
       ('Reflections Of Magic', 1),
@@ -141,7 +102,7 @@ INSERT INTO cancoes(nome_musica, id_album)
       ('Words Of Her Life', 5),
       ('Without My Streets', 5);
 
-INSERT INTO seguindo_artistas(id_usuario, id_artista)
+INSERT INTO seguindo_artistas(usuario_id, artista_id)
   VALUES
       (1, 1),
       (1, 3),
@@ -152,7 +113,7 @@ INSERT INTO seguindo_artistas(id_usuario, id_artista)
       (3, 2),
       (4, 4);
 
-INSERT INTO historico_reproducao(id_usuario, id_cancao)
+INSERT INTO historico_reproducoes(usuario_id, cancao_id)
   VALUES
       (1, 1),
       (1, 6),
