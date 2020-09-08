@@ -153,7 +153,7 @@ INSERT INTO album (`id_album`, `title`, `artist`)
 VALUES
     (1, 'Envious', 2),
     (2, 'Exuberant', 2),
-	(3, 'Hallowed Steam', 3),
+    (3, 'Hallowed Steam', 3),
     (4, 'Incandescent', 4),
     (5, 'Temporary Culture', 1);
 
@@ -217,4 +217,3 @@ VALUES
     (4, 3),
     (4, 18),
     (4, 11);
-    
