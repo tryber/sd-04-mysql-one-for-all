@@ -11,7 +11,7 @@ USE SpotifyClone;
 CREATE TABLE subscriptions (
     subscription_id INT NOT NULL AUTO_INCREMENT,
     subscription VARCHAR(30) NOT NULL,
-    price DOUBLE NOT NULL,
+    price DOUBLE(3, 2) NOT NULL,
     PRIMARY KEY (subscription_id),
     UNIQUE INDEX subscription_id_UNIQUE (subscription_id ASC)
 ) ENGINE = INNODB,
@@ -89,9 +89,9 @@ COMMENT = "Users played songs history";
 
 -- Insert data into subscriptions table
 INSERT INTO subscriptions (subscription, price)
-VALUES ("gratuito", "0.00"),
-    ("universitário", "7.99"),
-    ("familiar", "5.99");
+VALUES ("gratuito", 0.00),
+    ("universitário", 7.99),
+    ("familiar", 5.99);
 
 -- Insert data into users table
 INSERT INTO users (username, age, subscription)
