@@ -1,6 +1,6 @@
-DELIMITER $$
+DELIMITER &&
 CREATE TRIGGER trigger_usuario_delete 
-BEFORE DELETE ON ususario 
+BEFORE DELETE ON usuario 
 FOR EACH ROW
 BEGIN
 delete from seguir_artista
