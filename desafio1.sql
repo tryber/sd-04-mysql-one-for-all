@@ -96,7 +96,7 @@ VALUES ("gratuito", 0.00),
 -- Insert data into users table
 INSERT INTO users (username, age, subscription)
 VALUES ("Thati", 23, 1),
-    ("cintia", 35, 3),
+    ("Cintia", 35, 3),
     ("Bill", 20, 2),
     ("Roger", 45, 1);
 
