@@ -7,4 +7,3 @@ CREATE VIEW historico_reproducao_usuarios AS
     ON h.cancao_id = c.id
     ORDER BY usuario, nome
 );
-
