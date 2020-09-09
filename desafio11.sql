@@ -1,4 +1,4 @@
-CREATE VIEW perfil_artistas AS
+CREATE VIEW cancoes_premium AS
   SELECT 
     s.title AS nome,
     COUNT(ph.song) AS reproducoes
