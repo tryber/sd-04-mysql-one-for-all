@@ -39,8 +39,8 @@ CREATE TABLE cancoes(
     FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE historico_tocadas (
-    historico_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE musicas_escutadas (
+    escutada_id INT PRIMARY KEY AUTO_INCREMENT,
     cancao_id INT,
     usuario_id INT,
     FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id),
@@ -110,7 +110,7 @@ VALUES
     ("Without My Streets", 5, 4);
 
 INSERT INTO
-    historico_tocadas (cancao_id, usuario_id)
+    musicas_escutadas (cancao_id, usuario_id)
 VALUES
     (1, 1),
     (6, 1),
