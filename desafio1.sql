@@ -83,7 +83,7 @@ INSERT INTO
 VALUES
     ("Envious", 1),
     ("Exuberant", 1),
-    ("Halowed Steam", 2),
+    ("Hallowed Steam", 2),
     ("Incandescent", 3),
     ("Temporary Culture", 4);
 
