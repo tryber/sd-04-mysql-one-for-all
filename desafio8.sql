@@ -1,9 +1,16 @@
-CREATE VIEW faturamento_atual AS
-SELECT
-    ROUND(MIN(p.valor_plano), 2) faturamento_minimo,
-    ROUND(MAX(p.valor_plano), 2) faturamento_maximo,
-    ROUND(AVG(p.valor_plano), 2) faturamento_medio,
-    ROUND(SUM(p.valor_plano), 2) faturamento_total
-FROM
-    SpotifyClone.usuarios u
-    INNER JOIN SpotifyClone.planos p ON p.plano_id = u.plano_id;
+USE SpotifyClone;
+
+DELIMITER $ $ DROP TRIGGER IF EXISTS trigger_usuario_delete;
+
+CREATE TRIGGER trigger_usuario_delete BEFORE DELETE ON SpotifyClone.usuarios FOR EACH ROW BEGIN
+DELETE FROM
+    SpotifyClone.artistas_seguidos asg
+WHERE
+    asg.usuario_id = OLD.usuario_id;
+
+DELETE FROM
+    SpotifyClone.musicas_escutadas ms
+WHERE
+    ms.usuario_id = OLD.usuario_id;
+
+END $ $ DELIMITER;
