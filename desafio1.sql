@@ -7,17 +7,17 @@ USE SpotifyClone;
 CREATE TABLE planos(
     plano_id INT PRIMARY KEY AUTO_INCREMENT,
     plano VARCHAR(100),
-    valor_plano INT
+    valor_plano INT NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE artistas(
     artista_id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100)
+    nome VARCHAR(100) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE usuarios(
     usuario_id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100),
+    nome VARCHAR(100) NOT NULL,
     idade INT(3),
     plano_id INT,
     FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
@@ -26,34 +26,32 @@ CREATE TABLE usuarios(
 CREATE TABLE albuns(
     album_id INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(100),
-    artista_id INT,
+    artista_id INT NOT NULL,
     FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE cancoes(
     cancao_id INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(100),
-    album_id INT,
-    artista_id INT,
+    album_id INT NOT NULL,
+    artista_id INT NOT NULL,
     FOREIGN KEY (album_id) REFERENCES albuns(album_id),
     FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE musicas_escutadas (
-    escutada_id INT PRIMARY KEY AUTO_INCREMENT,
-    cancao_id INT NOT NULL,
     usuario_id INT NOT NULL,
-    FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id),
+    cancao_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+    FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id),
     PRIMARY KEY (cancao_id, usuario_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE artistas_seguidos (
-    seguida_id INT PRIMARY KEY AUTO_INCREMENT,
-    artista_id INT NOT NULL,
     usuario_id INT NOT NULL,
-    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
+    artista_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
     PRIMARY KEY (artista_id, usuario_id)
 ) ENGINE = InnoDB;
 
