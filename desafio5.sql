@@ -8,6 +8,7 @@ FROM
 GROUP BY
     c.titulo
 ORDER BY
-    reproducoes DESC
+    reproducoes DESC,
+    cancao
 LIMIT
     2;
