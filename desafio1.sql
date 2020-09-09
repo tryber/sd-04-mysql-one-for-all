@@ -48,6 +48,7 @@ CREATE TABLE historico_tocadas (
 ) ENGINE = InnoDB;
 
 CREATE TABLE artistas_seguidos (
+    seguida_id INT PRIMARY KEY AUTO_INCREMENT,
     artista_id INT,
     usuario_id INT,
     FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
