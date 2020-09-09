@@ -2,7 +2,7 @@ DELIMITER $$
 create procedure albuns_do_artista (
 in nome VARCHAR(100))
 BEGIN
-select distinct artista.nome, album.albuns
+select distinct artista.nome as artista, album.albuns as album
 from artista
 inner join album
 on artista.artista_id = album.artista_id
