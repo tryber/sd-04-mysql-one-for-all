@@ -41,16 +41,16 @@ CREATE TABLE cancoes(
 
 CREATE TABLE musicas_escutadas (
     escutada_id INT PRIMARY KEY AUTO_INCREMENT,
-    cancao_id INT,
-    usuario_id INT,
+    cancao_id INT NOT NULL,
+    usuario_id INT NOT NULL,
     FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE artistas_seguidos (
     seguida_id INT PRIMARY KEY AUTO_INCREMENT,
-    artista_id INT,
-    usuario_id INT,
+    artista_id INT NOT NULL,
+    usuario_id INT NOT NULL,
     FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 ) ENGINE = InnoDB;
