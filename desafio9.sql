@@ -1,13 +1,13 @@
 DELIMITER $$
 create procedure albuns_do_artista (
-in nome_artista VARCHAR(100))
+in nome VARCHAR(100))
 BEGIN
-select a.artista, al.album
-from artista a
-inner join album al
-on a.artista_id = al.artista_id
-having a.artista = nome_artista
-order by album;
+select distinct artista.nome, album.albuns
+from artista
+inner join album
+on artista.artista_id = album.artista_id
+having artista.nome = artista.nome
+order by album.albuns;
 END $$
 DELIMITER ;
 
