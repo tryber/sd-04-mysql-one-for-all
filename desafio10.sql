@@ -1,17 +1,17 @@
 USE SpotifyClone;
 
-DROP PROCEDURE IF EXISTS albuns_do_artista;
+DELIMITER $ $ DROP FUNCTION IF EXISTS quantidade_musicas_no_historico;
 
-DELIMITER $ $ CREATE PROCEDURE albuns_do_artista(IN nome VARCHAR(100)) BEGIN
+CREATE FUNCTION quantidade_musicas_no_historico(nome VARCHAR(100)) RETURNS INT READS SQL DATA BEGIN DECLARE total_tocadas INT;
+
 SELECT
-    a.nome artista,
-    ab.titulo album
+    COUNT(*)
 FROM
-    SpotifyClone.artistas a
-    INNER JOIN SpotifyClone.albuns ab ON ab.artista_id = a.artista_id
+    SpotifyClone.musicas_escutadas ms
+    INNER JOIN SpotifyClone.usuarios u ON u.usuario_id = ms.usuario_id
 WHERE
-    a.nome LIKE (nome)
-ORDER BY
-    ab.titulo;
+    u.nome LIKE 'Bill' INTO total_tocadas;
+
+RETURN total_tocadas;
 
 END $ $ DELIMITER;
