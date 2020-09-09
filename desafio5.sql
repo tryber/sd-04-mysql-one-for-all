@@ -12,5 +12,4 @@ cancao
 ORDER BY
 reproducoes DESC,
 cancao
-LIMIT
-2;
+LIMIT 2;
