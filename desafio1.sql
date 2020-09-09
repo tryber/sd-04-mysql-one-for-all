@@ -110,31 +110,31 @@ VALUES
     ("Without My Streets", 5, 4);
 
 INSERT INTO
-    musicas_escutadas (cancao_id, usuario_id)
+    musicas_escutadas (usuario_id, cancao_id)
 VALUES
     (1, 1),
-    (6, 1),
-    (14, 1),
-    (17, 1),
-    (13, 2),
-    (18, 2),
+    (1, 6),
+    (1, 14),
+    (1, 16),
+    (2, 13),
+    (2, 17),
     (2, 2),
-    (16, 2),
-    (4, 3),
-    (17, 3),
-    (6, 3),
+    (2, 15),
     (3, 4),
-    (19, 4),
-    (11, 4);
+    (3, 16),
+    (3, 6),
+    (4, 3),
+    (4, 18),
+    (4, 11);
 
 INSERT INTO
-    artistas_seguidos (artista_id, usuario_id)
+    artistas_seguidos (usuario_id, artista_id)
 VALUES
     (1, 1),
-    (4, 1),
-    (3, 1),
-    (1, 2),
-    (3, 2),
-    (2, 3),
+    (1, 4),
     (1, 3),
+    (2, 1),
+    (2, 3),
+    (3, 2),
+    (3, 1),
     (4, 4);
