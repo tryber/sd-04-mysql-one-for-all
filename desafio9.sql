@@ -1,9 +1,17 @@
-CREATE VIEW faturamento_atual AS
+USE SpotifyClone;
+
+DROP PROCEDURE IF EXISTS albuns_do_artista;
+
+DELIMITER $ $ CREATE PROCEDURE albuns_do_artista(IN nome VARCHAR(100)) BEGIN
 SELECT
-    ROUND(MIN(p.valor_plano), 2) faturamento_minimo,
-    ROUND(MAX(p.valor_plano), 2) faturamento_maximo,
-    ROUND(AVG(p.valor_plano), 2) faturamento_medio,
-    ROUND(SUM(p.valor_plano), 2) faturamento_total
+    a.nome artista,
+    ab.titulo album
 FROM
-    SpotifyClone.usuarios u
-    INNER JOIN SpotifyClone.planos p ON p.plano_id = u.plano_id;
+    SpotifyClone.artistas a
+    INNER JOIN SpotifyClone.albuns ab ON ab.artista_id = a.artista_id
+WHERE
+    a.nome LIKE (nome)
+ORDER BY
+    ab.titulo;
+
+END $ $ DELIMITER;
