@@ -1,3 +1,5 @@
+USE SpotifyClone;
+
 DELIMITER $$
 
 CREATE FUNCTION quantidade_musicas_no_historico(artist_name VARCHAR(100))
