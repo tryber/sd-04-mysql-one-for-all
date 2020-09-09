@@ -4,62 +4,62 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE usuarios(
-    usuario_id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100),
-    idade INT,
-    plano_id FOREIGN KEY REFERENCES planos(plano_id),
-) ENGINE = InnoDB;
-
 CREATE TABLE planos(
     plano_id INT PRIMARY KEY AUTO_INCREMENT,
     plano VARCHAR(100),
-    valor_plano INT,
-) ENGINE = InnoDB;
-
-CREATE TABLE historico_tocadas (
-    historico_id INT PRIMARY KEY AUTO_INCREMENT,
-    cancao_id FOREIGN KEY REFERENCES artistas(artista_id),
-    usuario_id FOREIGN KEY REFERENCES usuarios(usuario_id),
-) ENGINE = InnoDB;
-
-CREATE TABLE artistas_seguidos (
-    cancao_id FOREIGN KEY REFERENCES artistas(artista_id),
-    usuario_id FOREIGN KEY REFERENCES usuarios(usuario_id),
+    valor_plano INT
 ) ENGINE = InnoDB;
 
 CREATE TABLE artistas(
     artista_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100)
+) ENGINE = InnoDB;
+
+CREATE TABLE usuarios(
+    usuario_id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100),
+    idade INT(3),
+    plano_id INT,
+    FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE albuns(
     album_id INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(100),
-    artista_id FOREIGN KEY REFERENCES artistas(artista_id),
+    artista_id INT,
+    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE cancoes(
     cancao_id INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(100),
-    album_id FOREIGN KEY REFERENCES albuns(album_id),
-    artista_id FOREIGN KEY REFERENCES artistas(artista_id),
+    album_id INT,
+    artista_id INT,
+    FOREIGN KEY (album_id) REFERENCES albuns(album_id),
+    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE = InnoDB;
 
-INSERT INTO
-    usuarios (nome, idade, plano_id)
-VALUES
-    ("Thati", 23, 1),
-    ("Cintia", 35, 2),
-    ("Bill", 20, 3),
-    ("Roger", 45, 1);
+CREATE TABLE historico_tocadas (
+    historico_id INT PRIMARY KEY AUTO_INCREMENT,
+    cancao_id INT,
+    usuario_id INT,
+    FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+) ENGINE = InnoDB;
+
+CREATE TABLE artistas_seguidos (
+    artista_id INT,
+    usuario_id INT,
+    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+) ENGINE = InnoDB;
 
 INSERT INTO
     planos (plano, valor_plano)
 VALUES
     ("gratuito", 0),
-    ("familiar", 7, 99),
-    ("universitário", 5, 99);
+    ("familiar", 7.99),
+    ("universitário", 5.99);
 
 INSERT INTO
     artistas (nome)
@@ -68,6 +68,14 @@ VALUES
     ("Peter Strong"),
     ("Lance Day"),
     ("Freedie Shannon");
+
+INSERT INTO
+    usuarios (nome, idade, plano_id)
+VALUES
+    ("Thati", 23, 1),
+    ("Cintia", 35, 2),
+    ("Bill", 20, 3),
+    ("Roger", 45, 1);
 
 INSERT INTO
     albuns (titulo, artista_id)
@@ -102,18 +110,6 @@ VALUES
     ("Without My Streets", 5, 4);
 
 INSERT INTO
-    artistas_seguidos (artista_id, usuario_id)
-VALUES
-    (1, 1),
-    (4, 1),
-    (3, 1),
-    (1, 2),
-    (3, 2),
-    (2, 3),
-    (1, 3),
-    (4, 4);
-
-INSERT INTO
     historico_tocadas (cancao_id, usuario_id)
 VALUES
     (1, 1),
@@ -130,3 +126,15 @@ VALUES
     (3, 4),
     (19, 4),
     (11, 4);
+
+INSERT INTO
+    artistas_seguidos (artista_id, usuario_id)
+VALUES
+    (1, 1),
+    (4, 1),
+    (3, 1),
+    (1, 2),
+    (3, 2),
+    (2, 3),
+    (1, 3),
+    (4, 4);
