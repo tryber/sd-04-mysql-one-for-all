@@ -6,4 +6,3 @@ CREATE VIEW perfil_artistas AS
   WHERE s.id = ph.song AND (u.plan >= 2 AND u.id = ph.user)
   GROUP BY s.id
   ORDER BY s.title
-  
