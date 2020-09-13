@@ -7,4 +7,5 @@ FROM SpotifyClone.usuarios_artista
 WHERE artista_id = a.artista_id
 ) AS seguidores
 FROM SpotifyClone.artistas AS a
-ORDER BY seguidores DESC, artista;
+ORDER BY seguidores DESC, artista
+LIMIT 3;
