@@ -10,11 +10,17 @@ Seus resultados devem estar ordenados de forma decrescente, baseando-se no núme
   Em caso de empate no número de pessoas, ordene os resultados pelo nome da pessoa artista em ordem alfabética
   e caso há artistas com o mesmo nome, ordene os resultados pelo nome do álbum alfabeticamente.
 */
--- create view perfil_artistas as
-select * from album as alb
-inner join artista as art on art.id = alb.artista_id
-inner join seguindo_artista as sa on sa.artista_id = alb.artista_id;
+/*
+Referência
+https://dev.mysql.com/doc/refman/5.7/en/group-by-handling.html#:~:text=This%20query%20might%20be%20invalid,FROM%20t%20GROUP%20BY%20name%3B&text=In%20such%20cases%2C%20MySQL%20recognizes,dependent%20on%20a%20grouping%20column.
+*/
 
-select * from artista;
-select * from seguindo_artista;
-
+CREATE VIEW perfil_artistas AS
+  SELECT ANY_VALUE(art.nome) AS artista,
+  alb.nome AS album,
+  COUNT(sa.artista_id) AS seguidores
+  FROM SpotifyClone.album AS alb
+  INNER JOIN SpotifyClone.artista AS art ON art.id = alb.artista_id
+  INNER JOIN SpotifyClone.seguindo_artista AS sa ON sa.artista_id = alb.artista_id
+  GROUP BY album
+  ORDER BY seguidores DESC, artista ASC, album ASC;
