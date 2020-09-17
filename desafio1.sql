@@ -90,6 +90,7 @@ VALUES
 CREATE TABLE historico(
   usuario_id INT NOT NULL,
   cancao_id INT NOT NULL,
+  PRIMARY KEY (usuario_id, cancao_id),
   CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
   CONSTRAINT FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 )engine = InnoDB;
@@ -114,6 +115,7 @@ VALUES
 CREATE TABLE seguindo(
   usuario_id INT NOT NULL,
   artista_id INT NOT NULL,
+  PRIMARY KEY (usuario_id, artista_id),
   CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
   CONSTRAINT FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 )engine = InnoDB;
