@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS SpotfyClone;
-CREATE DATABASE SpotfyClone;
-USE SpotfyClone;
+DROP DATABASE IF EXISTS SpotifyClone;
+CREATE DATABASE SpotifyClone;
+USE SpotifyClone;
 CREATE TABLE planos(
   plano_id INT NOT NULL AUTO_INCREMENT,
   plano_nome VARCHAR(30),
