@@ -1,3 +1,4 @@
+CREATE VIEW cancoes_premium AS
 SELECT
   cancoes.cancao_nome AS nome,
   (
