@@ -7,7 +7,7 @@
   "tabela_que_contem_plano": "planos",
   "coluna_historico_de_reproducoes": "cancao_id",
   "tabela_que_contem_historico_de_reproducoes": "historico_reproducoes",
-  "coluna_seguindo_artistas": "artistas_id",
+  "coluna_seguindo_artistas": "artista_id",
   "tabela_que_contem_seguindo_artistas": "seguindo_artistas",
   "coluna_artista": "nome_artista",
   "tabela_que_contem_artista": "artistas",
