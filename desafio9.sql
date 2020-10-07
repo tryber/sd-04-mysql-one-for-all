@@ -6,7 +6,7 @@ BEGIN
 SELECT 
   art.nome_artista AS 'artista', alb.titulo_album AS 'album'
 FROM SpotifyClone.artistas AS art
-  INNER JOIN potifyClone.albuns AS alb ON art.artista_id = alb.artista_id 
+  INNER JOIN SpotifyClone.albuns AS alb ON art.artista_id = alb.artista_id 
 AND art.nome_artista = nome_do_artista
 ORDER BY `album`;
 END $$
